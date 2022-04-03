@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       // initialRoute: "home",
       // onGenerateRoute: (settings) {
       //   switch (settings.name) {
@@ -27,9 +28,7 @@ class MyApp extends StatelessWidget {
       //   }
       // },
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.red),
       home: MainScreen(),
     );
   }
@@ -45,7 +44,7 @@ class _MainScreenState extends State<MainScreen> {
   List pages = [
     HomePage(),
     SearchPage(),
-    UserProfilePage(),
+    WishlistPage(),
   ];
   void onTap(int index) {
     setState(() {
@@ -94,19 +93,23 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 0,
         unselectedFontSize: 0,
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
-        selectedItemColor: Colors.cyan,
-        unselectedItemColor: Colors.red,
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.grey,
         showUnselectedLabels: false,
         showSelectedLabels: false,
         onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Home"),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: "Search"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: "Search",
+          ),
           // BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "Bar"),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: "User"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.favorite_border_rounded), label: "Favourite"),
         ],
       ),
     );

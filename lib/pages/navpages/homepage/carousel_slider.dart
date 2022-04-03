@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const double BORDER_RADIUS = 20;
+
 class CarouselSlider extends StatelessWidget {
   const CarouselSlider({Key? key}) : super(key: key);
 
@@ -15,26 +17,26 @@ class CarouselSlider extends StatelessWidget {
             width: 20,
           ),
           CarouselSliderItem(
-              imgPath: "imgPath",
-              category: "category",
-              label: "label",
-              waitingTime: "waitingTime"),
+              imgPath: "assets/images/bbq.jpg",
+              category: "Recommend",
+              label: "Home BBQ",
+              waitingTime: "30 min | 3 serving"),
           SizedBox(
             width: 20,
           ),
           CarouselSliderItem(
-              imgPath: "imgPath",
-              category: "category",
-              label: "label",
-              waitingTime: "waitingTime"),
+              imgPath: "assets/images/sandwich.jpg",
+              category: "Snack",
+              label: "Sandwich",
+              waitingTime: "0 min | Ready"),
           SizedBox(
             width: 20,
           ),
           CarouselSliderItem(
-              imgPath: "imgPath",
-              category: "category",
-              label: "label",
-              waitingTime: "waitingTime"),
+              imgPath: "assets/images/mala_xg.png",
+              category: "Junk Food",
+              label: "Mala Xiang Guo",
+              waitingTime: "10 min | 1 serving"),
           SizedBox(
             width: 20,
           ),
@@ -65,12 +67,13 @@ class CarouselSliderItem extends StatelessWidget {
         Container(
           width: 200,
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(BORDER_RADIUS),
             color: Colors.black38,
             image: DecorationImage(
               alignment: Alignment.center,
               matchTextDirection: true,
               repeat: ImageRepeat.noRepeat,
-              image: new AssetImage('assets/images/sandwich.jpg'),
+              image: new AssetImage(imgPath),
               fit: BoxFit.cover,
             ),
           ),
@@ -80,32 +83,69 @@ class CarouselSliderItem extends StatelessWidget {
           left: 0,
           right: 0,
           child: Container(
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(color: Colors.red),
+            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+            decoration: BoxDecoration(
+                color: Color.fromARGB(153, 0, 0, 0),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(BORDER_RADIUS),
+                  bottomRight: Radius.circular(BORDER_RADIUS),
+                )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [Text("Pork Noodles"), Text("30 Min | 1 serving")],
+                  children: [
+                    Text(
+                      label,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      waitingTime,
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
                 ),
-                Text("Icon here"),
+                GestureDetector(
+                  onTap: () {},
+                  child: Icon(
+                    Icons.favorite_border,
+                    color: Colors.white,
+                  ),
+                )
               ],
             ),
           ),
         ),
         Positioned(
-          top: 0,
-          left: 0,
-          child: Container(
-            padding: EdgeInsets.all(8),
-            child: Text(
-              "Category",
-              style: TextStyle(backgroundColor: Colors.red),
-            ),
+          top: 10,
+          left: 10,
+          child: CategoryItem(
+            category: category,
           ),
         ),
       ],
+    );
+  }
+}
+
+class CategoryItem extends StatelessWidget {
+  final String category;
+
+  const CategoryItem({Key? key, required this.category}) : super(key: key);
+// #5A5859
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
+      decoration: BoxDecoration(
+        color: Color.fromARGB(153, 0, 0, 0),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      child: Text(
+        category,
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 }
