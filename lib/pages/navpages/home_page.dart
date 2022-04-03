@@ -9,9 +9,7 @@ class HomePage extends StatelessWidget {
       children: [
         // Banner
         HomePageBanner(),
-        SizedBox(
-          height: 10,
-        ),
+
         // horizontal scroll bubble
         HorizontalListMenu(),
         SizedBox(
@@ -53,7 +51,7 @@ class HorizontalListMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
-      height: 50,
+      height: 40,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: <Widget>[
@@ -73,6 +71,9 @@ class HorizontalListMenu extends StatelessWidget {
             label: "Beef",
             onPressed: () {},
           ),
+          SizedBox(
+            width: 15,
+          )
         ],
       ),
     );
@@ -96,12 +97,12 @@ class HorizontalListItem extends StatelessWidget {
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(20),
       ),
-      margin: EdgeInsets.symmetric(horizontal: 8),
+      margin: EdgeInsets.only(left: 10),
       padding: EdgeInsets.symmetric(horizontal: 15),
       child: Center(
         child: Text(
           label,
-          style: TextStyle(fontSize: 18, color: Colors.black),
+          style: TextStyle(fontSize: 14, color: Colors.black),
         ),
       ),
     );
@@ -119,15 +120,30 @@ class CarouselSlider extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          CarouselSliderItem(),
           SizedBox(
             width: 20,
           ),
-          CarouselSliderItem(),
+          CarouselSliderItem(
+              imgPath: "imgPath",
+              category: "category",
+              label: "label",
+              waitingTime: "waitingTime"),
           SizedBox(
             width: 20,
           ),
-          CarouselSliderItem(),
+          CarouselSliderItem(
+              imgPath: "imgPath",
+              category: "category",
+              label: "label",
+              waitingTime: "waitingTime"),
+          SizedBox(
+            width: 20,
+          ),
+          CarouselSliderItem(
+              imgPath: "imgPath",
+              category: "category",
+              label: "label",
+              waitingTime: "waitingTime"),
           SizedBox(
             width: 20,
           ),
@@ -138,10 +154,18 @@ class CarouselSlider extends StatelessWidget {
 }
 
 class CarouselSliderItem extends StatelessWidget {
-  // final String imgPath;
-  // final String
+  final String imgPath;
+  final String category;
+  final String label;
+  final String waitingTime;
 
-  const CarouselSliderItem({Key? key}) : super(key: key);
+  const CarouselSliderItem(
+      {Key? key,
+      required this.imgPath,
+      required this.category,
+      required this.label,
+      required this.waitingTime})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +189,7 @@ class CarouselSliderItem extends StatelessWidget {
           left: 0,
           right: 0,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 7),
+            padding: EdgeInsets.all(5),
             decoration: BoxDecoration(color: Colors.red),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -182,9 +206,12 @@ class CarouselSliderItem extends StatelessWidget {
         Positioned(
           top: 0,
           left: 0,
-          child: Text(
-            "Category",
-            style: TextStyle(backgroundColor: Colors.red),
+          child: Container(
+            padding: EdgeInsets.all(8),
+            child: Text(
+              "Category",
+              style: TextStyle(backgroundColor: Colors.red),
+            ),
           ),
         ),
       ],
