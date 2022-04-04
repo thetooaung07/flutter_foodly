@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_order/model/shopping_cart.dart';
+import 'package:food_order/model/shopping_cart_provider.dart';
+import 'package:provider/provider.dart';
 
 const double BORDER_RADIUS = 20;
 
@@ -47,6 +50,8 @@ class CarouselSlider extends StatelessWidget {
 }
 
 class CarouselSliderItem extends StatelessWidget {
+  // ShoppingCart()
+
   final String imgPath;
   final String category;
   final String label;
@@ -114,9 +119,20 @@ class CarouselSliderItem extends StatelessWidget {
                     ],
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Provider.of<ShoppingCartProvider>(context, listen: false)
+                          .addItemToCart(
+                        ShoppingCart(
+                          imgPath: imgPath,
+                          category: category,
+                          label: label,
+                          waitingTime: waitingTime,
+                          description: "Somethings",
+                        ),
+                      );
+                    },
                     child: Icon(
-                      Icons.favorite_border,
+                      Icons.shopping_cart_checkout_outlined,
                       color: Colors.white,
                     ),
                   )

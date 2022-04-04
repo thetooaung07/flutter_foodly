@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/drawer/main_screen_drawer.dart';
+import 'package:food_order/model/shopping_cart_provider.dart';
 import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/navpages/search_page.dart';
 import 'package:food_order/pages/navpages/user_profile.dart';
 import 'package:food_order/pages/shopping_cart_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,27 +18,34 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case "home":
-            return MaterialPageRoute(builder: (context) => (HomePage()));
-          case "detail_page":
-            return MaterialPageRoute(
-                builder: (context) => (DetailsPage(
-                      imgPath: settings.arguments.toString(),
-                    )));
-          case "shopping_cart_page":
-            return MaterialPageRoute(
-                builder: (context) => (ShoppingCartPage()));
-          default:
-            return MaterialPageRoute(builder: (context) => (HomePage()));
-        }
-      },
-      title: 'Flutter Demo',
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: MainScreen(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => ShoppingCartProvider(),
+        )
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case "home":
+              return MaterialPageRoute(builder: (context) => (HomePage()));
+            case "detail_page":
+              return MaterialPageRoute(
+                  builder: (context) => (DetailsPage(
+                        imgPath: settings.arguments.toString(),
+                      )));
+            case "shopping_cart_page":
+              return MaterialPageRoute(
+                  builder: (context) => (ShoppingCartPage()));
+            default:
+              return MaterialPageRoute(builder: (context) => (HomePage()));
+          }
+        },
+        title: 'Flutter Demo',
+        theme: ThemeData(primarySwatch: Colors.red),
+        home: MainScreen(),
+      ),
     );
   }
 }

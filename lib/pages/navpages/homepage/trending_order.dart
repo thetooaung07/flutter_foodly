@@ -1,11 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/star_rating_component.dart';
+import 'package:food_order/model/shopping_cart.dart';
 
 class TrendingOrder extends StatelessWidget {
   const TrendingOrder({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final List<ShoppingCart> ListData = [
+      ShoppingCart(
+          imgPath: "assets/images/bbq.jpg",
+          category: "Recommend",
+          label: "Home BBQ",
+          waitingTime: "30 min | 3 serving"),
+      ShoppingCart(
+          imgPath: "assets/images/sandwich.jpg",
+          category: "Snack",
+          label: "Sandwich",
+          waitingTime: "0 min | Ready"),
+      ShoppingCart(
+          imgPath: "assets/images/mala_xg.png",
+          category: "Junk Food",
+          label: "Mala Xiang Guo",
+          waitingTime: "10 min | 1 serving"),
+      ShoppingCart(
+          imgPath: "assets/images/bbq.jpg",
+          category: "Recommend",
+          label: "Home BBQ",
+          waitingTime: "30 min | 3 serving"),
+    ];
     return Container(
       margin: EdgeInsets.all(15),
       child: Column(
@@ -30,10 +53,22 @@ class TrendingOrder extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          TrendingOrderCard(),
-          TrendingOrderCard(),
-          TrendingOrderCard(),
-          TrendingOrderCard(),
+          TrendingOrderCard(
+              data: ListData[0],
+              icon: Icon(Icons.keyboard_arrow_right_rounded),
+              onPressed: () => null),
+          TrendingOrderCard(
+              data: ListData[1],
+              icon: Icon(Icons.keyboard_arrow_right_rounded),
+              onPressed: () => null),
+          TrendingOrderCard(
+              data: ListData[2],
+              icon: Icon(Icons.keyboard_arrow_right_rounded),
+              onPressed: () => null),
+          TrendingOrderCard(
+              data: ListData[3],
+              icon: Icon(Icons.keyboard_arrow_right_rounded),
+              onPressed: () => null),
         ],
       ),
     );
@@ -41,7 +76,15 @@ class TrendingOrder extends StatelessWidget {
 }
 
 class TrendingOrderCard extends StatelessWidget {
-  const TrendingOrderCard({Key? key}) : super(key: key);
+  final ShoppingCart data;
+  final Icon icon;
+  final Function() onPressed;
+  const TrendingOrderCard(
+      {Key? key,
+      required this.data,
+      required this.icon,
+      required this.onPressed})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +101,11 @@ class TrendingOrderCard extends StatelessWidget {
                   minHeight: 70,
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("assets/images/burger.jpg"),
+                      backgroundImage: AssetImage(data.imgPath),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(8.0, 5.0, 0.0, 5.0),
@@ -72,7 +115,7 @@ class TrendingOrderCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            "Burger",
+                            data.label.toString(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             // style: CustomTextStyle.textSubtitle2BlackShades(context),
@@ -86,7 +129,7 @@ class TrendingOrderCard extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {},
-                      child: Icon(Icons.keyboard_arrow_right_rounded),
+                      child: icon,
                     )
                   ],
                 ),
