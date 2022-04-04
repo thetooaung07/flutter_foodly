@@ -17,17 +17,20 @@ class DetailsPage extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Container(
-                    height: 300,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.circular(BORDER_RADIUS),
-                      color: Colors.black38,
-                      image: DecorationImage(
-                        alignment: Alignment.center,
-                        repeat: ImageRepeat.noRepeat,
-                        image: new AssetImage(imgPath),
-                        fit: BoxFit.cover,
+                  Hero(
+                    tag: imgPath,
+                    child: Container(
+                      height: 300,
+                      width: MediaQuery.of(context).size.width,
+                      decoration: BoxDecoration(
+                        // borderRadius: BorderRadius.circular(BORDER_RADIUS),
+                        color: Colors.black38,
+                        image: DecorationImage(
+                          alignment: Alignment.center,
+                          repeat: ImageRepeat.noRepeat,
+                          image: new AssetImage(imgPath),
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

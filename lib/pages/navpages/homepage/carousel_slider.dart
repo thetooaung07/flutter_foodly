@@ -68,17 +68,20 @@ class CarouselSliderItem extends StatelessWidget {
       },
       child: Stack(
         children: [
-          Container(
-            width: 200,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(BORDER_RADIUS),
-              color: Colors.black38,
-              image: DecorationImage(
-                alignment: Alignment.center,
-                matchTextDirection: true,
-                repeat: ImageRepeat.noRepeat,
-                image: new AssetImage(imgPath),
-                fit: BoxFit.cover,
+          Hero(
+            tag: imgPath,
+            child: Container(
+              width: 200,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(BORDER_RADIUS),
+                color: Colors.black38,
+                image: DecorationImage(
+                  alignment: Alignment.center,
+                  matchTextDirection: true,
+                  repeat: ImageRepeat.noRepeat,
+                  image: new AssetImage(imgPath),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
