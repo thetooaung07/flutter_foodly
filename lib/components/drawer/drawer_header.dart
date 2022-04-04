@@ -12,6 +12,7 @@ class DrawerHeaderComponent extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 50,
+            backgroundImage: AssetImage("assets/images/anime_profile.png"),
           ),
           SizedBox(
             height: 30,

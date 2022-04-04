@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_order/components/star_rating_component.dart';
 
 class TrendingOrder extends StatelessWidget {
   const TrendingOrder({Key? key}) : super(key: key);
@@ -13,10 +14,13 @@ class TrendingOrder extends StatelessWidget {
             alignment: Alignment.centerLeft,
             child: Row(
               children: [
-                Text(
-                  "Trending ",
-                  style: TextStyle(
-                    fontSize: 20,
+                Padding(
+                  padding: EdgeInsets.only(left: 7),
+                  child: Text(
+                    "Trending",
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                 ),
                 Icon(Icons.trending_up_rounded),
@@ -73,12 +77,10 @@ class TrendingOrderCard extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             // style: CustomTextStyle.textSubtitle2BlackShades(context),
                           ),
-                          Text(
-                            'Rating',
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            // style: CustomTextStyle.textSubtitle1blueShades(context),
-                          )
+                          StarRatingComponent(
+                            rating: 4.3,
+                            ratingTextStyle: TextStyle(fontSize: 14),
+                          ),
                         ],
                       ),
                     ),

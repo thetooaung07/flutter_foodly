@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_order/components/star_rating_component.dart';
 import 'package:food_order/utils/constants.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -148,37 +149,6 @@ class DetailsPage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class StarRatingComponent extends StatelessWidget {
-  final double rating;
-  final int? reviewsCount;
-  final bool? isReviewed;
-  const StarRatingComponent(
-      {Key? key,
-      required this.rating,
-      this.reviewsCount = 0,
-      this.isReviewed = false})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Icon(
-          Icons.star_rounded,
-          color: Colors.yellow,
-        ),
-        SizedBox(width: 5),
-        Text(
-          rating.toString(),
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-        ),
-        SizedBox(width: 10),
-        isReviewed! ? Text("(${reviewsCount.toString()} Reviews)") : Text(" "),
-      ],
     );
   }
 }
