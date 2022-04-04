@@ -62,69 +62,74 @@ class CarouselSliderItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          width: 200,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(BORDER_RADIUS),
-            color: Colors.black38,
-            image: DecorationImage(
-              alignment: Alignment.center,
-              matchTextDirection: true,
-              repeat: ImageRepeat.noRepeat,
-              image: new AssetImage(imgPath),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          left: 0,
-          right: 0,
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(context).pushNamed("detail_page", arguments: imgPath);
+      },
+      child: Stack(
+        children: [
+          Container(
+            width: 200,
             decoration: BoxDecoration(
-                color: Color.fromARGB(153, 0, 0, 0),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(BORDER_RADIUS),
-                  bottomRight: Radius.circular(BORDER_RADIUS),
-                )),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      label,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      waitingTime,
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Icon(
-                    Icons.favorite_border,
-                    color: Colors.white,
-                  ),
-                )
-              ],
+              borderRadius: BorderRadius.circular(BORDER_RADIUS),
+              color: Colors.black38,
+              image: DecorationImage(
+                alignment: Alignment.center,
+                matchTextDirection: true,
+                repeat: ImageRepeat.noRepeat,
+                image: new AssetImage(imgPath),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        Positioned(
-          top: 10,
-          left: 10,
-          child: CategoryItem(
-            category: category,
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              decoration: BoxDecoration(
+                  color: Color.fromARGB(153, 0, 0, 0),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(BORDER_RADIUS),
+                    bottomRight: Radius.circular(BORDER_RADIUS),
+                  )),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        label,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Text(
+                        waitingTime,
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.favorite_border,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
           ),
-        ),
-      ],
+          Positioned(
+            top: 10,
+            left: 10,
+            child: CategoryItem(
+              category: category,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/drawer/main_screen_drawer.dart';
+import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/navpages/search_page.dart';
 import 'package:food_order/pages/navpages/user_profile.dart';
+import 'package:food_order/pages/shopping_cart_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,17 +18,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      // initialRoute: "home",
-      // onGenerateRoute: (settings) {
-      //   switch (settings.name) {
-      //     case "home":
-      //       return MaterialPageRoute(builder: (context) => (MyHomePage()));
-      //     case "searchpage":
-      //       return MaterialPageRoute(builder: (context) => (SearchPage()));
-      //     default:
-      //       return MaterialPageRoute(builder: (context) => (MyHomePage()));
-      //   }
-      // },
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case "home":
+            return MaterialPageRoute(builder: (context) => (HomePage()));
+          case "detail_page":
+            return MaterialPageRoute(
+                builder: (context) => (DetailsPage(
+                      imgPath: settings.arguments.toString(),
+                    )));
+          case "shopping_cart_page":
+            return MaterialPageRoute(
+                builder: (context) => (ShoppingCartPage()));
+          default:
+            return MaterialPageRoute(builder: (context) => (HomePage()));
+        }
+      },
       title: 'Flutter Demo',
       theme: ThemeData(primarySwatch: Colors.red),
       home: MainScreen(),
@@ -81,7 +88,9 @@ class _MainScreenState extends State<MainScreen> {
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed("shopping_cart_page");
+                },
                 child: Icon(
                   Icons.shopping_cart_outlined,
                   size: 26.0,
