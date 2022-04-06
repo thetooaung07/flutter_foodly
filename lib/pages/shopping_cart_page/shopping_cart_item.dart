@@ -21,42 +21,52 @@ class ShoppingCartItem extends StatelessWidget {
           ],
           border: Border.all(color: Color.fromARGB(64, 0, 0, 0)),
           borderRadius: BorderRadius.circular(20)),
-      child: Row(
-        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            height: 75,
-            width: 100,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-              ),
-              image: DecorationImage(
-                // alignment: Alignment.centerRight,
-                repeat: ImageRepeat.noRepeat,
-                image: new AssetImage(data.imageUrl),
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SizedBox(
-            width: 30,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(data.title),
-                SizedBox(
-                  height: 10,
+      child: IntrinsicHeight(
+        child: Row(
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: 75,
+              width: 100,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
                 ),
-                Text("\$${data.price} x ${data.quantity}")
-              ],
+                image: DecorationImage(
+                  // alignment: Alignment.centerRight,
+                  repeat: ImageRepeat.noRepeat,
+                  image: new AssetImage(data.imageUrl),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
-          ),
-          Text("\$${data.price * data.quantity}"),
-        ],
+            SizedBox(
+              width: 30,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(data.title),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text("\$${data.price} x ${data.quantity}"),
+                ],
+              ),
+            ),
+            VerticalDivider(
+              color: Color.fromARGB(255, 0, 0, 0),
+              thickness: 2,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text("\$${data.price * data.quantity}"),
+          ],
+        ),
       ),
     );
   }
