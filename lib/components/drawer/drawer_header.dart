@@ -10,18 +10,30 @@ class DrawerHeaderComponent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            radius: 50,
-            backgroundImage: AssetImage("assets/images/anime_profile.png"),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CircleAvatar(
+                radius: 50,
+                backgroundImage: AssetImage("assets/images/anime_profile.png"),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: Icon(Icons.exit_to_app),
+              )
+            ],
           ),
           SizedBox(
             height: 30,
           ),
-          Text("Thet Oo Aung"),
+          Text("Customer"),
           SizedBox(
             height: 10,
           ),
-          Text("thetooaung07@gmail.com"),
+          Text("customer07@gmail.com"),
         ],
       ),
     );

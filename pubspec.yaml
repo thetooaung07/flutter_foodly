@@ -34,6 +34,9 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   provider: ^6.0.2
+  starlight_http_cached:
+    git:
+      url: https://github.com/YeMyoAung/starlight_http_cached.git
 
 dev_dependencies:
   flutter_test:

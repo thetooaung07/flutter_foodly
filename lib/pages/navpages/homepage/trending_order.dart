@@ -1,96 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/star_rating_component.dart';
-import 'package:food_order/model/shopping_cart.dart';
+import 'package:food_order/providers/cart.dart';
+import 'package:food_order/providers/products_provider.dart';
+import 'package:provider/provider.dart';
 
 class TrendingOrder extends StatelessWidget {
   const TrendingOrder({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<ShoppingCart> ListData = [
-      ShoppingCart(
-          imgPath: "assets/images/bbq.jpg",
-          category: "Recommend",
-          label: "Home BBQ",
-          waitingTime: "30 min | 3 serving"),
-      ShoppingCart(
-          imgPath: "assets/images/sandwich.jpg",
-          category: "Snack",
-          label: "Sandwich",
-          waitingTime: "0 min | Ready"),
-      ShoppingCart(
-          imgPath: "assets/images/mala_xg.png",
-          category: "Junk Food",
-          label: "Mala Xiang Guo",
-          waitingTime: "10 min | 1 serving"),
-      ShoppingCart(
-          imgPath: "assets/images/bbq.jpg",
-          category: "Recommend",
-          label: "Home BBQ",
-          waitingTime: "30 min | 3 serving"),
-    ];
+    final products = Provider.of<ProductsProvider>(context).items;
+
     return Container(
-      margin: EdgeInsets.all(15),
-      child: Column(
-        children: [
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 7),
-                  child: Text(
-                    "Trending",
-                    style: TextStyle(
-                      fontSize: 20,
+        margin: EdgeInsets.all(15),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 7),
+                    child: Text(
+                      "Trending",
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
                     ),
                   ),
-                ),
-                Icon(Icons.trending_up_rounded),
-              ],
+                  Icon(Icons.trending_up_rounded),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          TrendingOrderCard(
-              data: ListData[0],
-              icon: Icon(Icons.keyboard_arrow_right_rounded),
-              onPressed: () => null),
-          TrendingOrderCard(
-              data: ListData[1],
-              icon: Icon(Icons.keyboard_arrow_right_rounded),
-              onPressed: () => null),
-          TrendingOrderCard(
-              data: ListData[2],
-              icon: Icon(Icons.keyboard_arrow_right_rounded),
-              onPressed: () => null),
-          TrendingOrderCard(
-              data: ListData[3],
-              icon: Icon(Icons.keyboard_arrow_right_rounded),
-              onPressed: () => null),
-        ],
-      ),
-    );
+            SizedBox(
+              height: 20,
+            ),
+            for (var item in products)
+              TrendingOrderCard(
+                  data: CartItem(
+                      id: item.id,
+                      price: item.price,
+                      quantity: 1,
+                      imageUrl: item.imageUrl,
+                      title: item.title),
+                  icon: Icon(Icons.keyboard_arrow_right_rounded),
+                  onPressedCard: () => Navigator.of(context)
+                      .pushNamed("details_page", arguments: item.imageUrl)),
+          ],
+        ));
   }
 }
 
 class TrendingOrderCard extends StatelessWidget {
-  final ShoppingCart data;
+  final CartItem data;
   final Icon icon;
-  final Function() onPressed;
+  final Function()? onPressedIcon;
+  final Function()? onPressedCard;
   const TrendingOrderCard(
       {Key? key,
       required this.data,
       required this.icon,
-      required this.onPressed})
+      this.onPressedIcon,
+      this.onPressedCard})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        onTap: () {},
+        onTap: onPressedCard ?? null,
         child: Stack(
           children: <Widget>[
             Padding(
@@ -105,7 +83,7 @@ class TrendingOrderCard extends StatelessWidget {
                   children: <Widget>[
                     CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage(data.imgPath),
+                      backgroundImage: AssetImage(data.imageUrl),
                     ),
                     Container(
                       padding: EdgeInsets.fromLTRB(8.0, 5.0, 0.0, 5.0),
@@ -115,7 +93,7 @@ class TrendingOrderCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           Text(
-                            data.label.toString(),
+                            data.title.toString(),
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             // style: CustomTextStyle.textSubtitle2BlackShades(context),
@@ -128,7 +106,7 @@ class TrendingOrderCard extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: onPressedIcon ?? null,
                       child: icon,
                     )
                   ],

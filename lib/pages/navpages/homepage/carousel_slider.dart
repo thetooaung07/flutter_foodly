@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order/model/shopping_cart.dart';
-import 'package:food_order/model/shopping_cart_provider.dart';
+import 'package:food_order/components/toggle_icon.dart';
+import 'package:food_order/providers/product.dart';
+import 'package:food_order/providers/products_provider.dart';
 import 'package:provider/provider.dart';
 
 const double BORDER_RADIUS = 20;
@@ -10,39 +11,29 @@ class CarouselSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final productData = Provider.of<ProductsProvider>(context);
+    final products = productData.items;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 250,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          SizedBox(
-            width: 20,
-          ),
-          CarouselSliderItem(
-              imgPath: "assets/images/bbq.jpg",
-              category: "Recommend",
-              label: "Home BBQ",
-              waitingTime: "30 min | 3 serving"),
-          SizedBox(
-            width: 20,
-          ),
-          CarouselSliderItem(
-              imgPath: "assets/images/sandwich.jpg",
-              category: "Snack",
-              label: "Sandwich",
-              waitingTime: "0 min | Ready"),
-          SizedBox(
-            width: 20,
-          ),
-          CarouselSliderItem(
-              imgPath: "assets/images/mala_xg.png",
-              category: "Junk Food",
-              label: "Mala Xiang Guo",
-              waitingTime: "10 min | 1 serving"),
-          SizedBox(
-            width: 20,
-          ),
+          for (var item in products)
+            Row(
+              children: [
+                SizedBox(
+                  width: 20,
+                ),
+                ChangeNotifierProvider(
+                  create: (ctx) => item,
+                  child: CarouselSliderItem(
+                    product: item,
+                  ),
+                )
+              ],
+            ),
+          SizedBox(width: 20),
         ],
       ),
     );
@@ -52,41 +43,33 @@ class CarouselSlider extends StatelessWidget {
 class CarouselSliderItem extends StatelessWidget {
   // ShoppingCart()
 
-  final String imgPath;
-  final String category;
-  final String label;
-  final String waitingTime;
+  final Product product;
 
-  const CarouselSliderItem(
-      {Key? key,
-      required this.imgPath,
-      required this.category,
-      required this.label,
-      required this.waitingTime})
-      : super(key: key);
+  const CarouselSliderItem({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).pushNamed("detail_page", arguments: imgPath);
+        Navigator.of(context)
+            .pushNamed("details_page", arguments: product.imageUrl);
       },
       child: Stack(
         children: [
-          Hero(
-            tag: imgPath,
-            child: Container(
-              width: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(BORDER_RADIUS),
-                color: Colors.black38,
-                image: DecorationImage(
-                  alignment: Alignment.center,
-                  matchTextDirection: true,
-                  repeat: ImageRepeat.noRepeat,
-                  image: new AssetImage(imgPath),
-                  fit: BoxFit.cover,
-                ),
+          Container(
+            width: 200,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(BORDER_RADIUS),
+              color: Colors.black38,
+              image: DecorationImage(
+                alignment: Alignment.center,
+                matchTextDirection: true,
+                repeat: ImageRepeat.noRepeat,
+                image: new AssetImage(product.imageUrl),
+                fit: BoxFit.cover,
               ),
             ),
           ),
@@ -109,33 +92,18 @@ class CarouselSliderItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        label,
+                        product.title,
                         style: TextStyle(color: Colors.white),
                       ),
                       Text(
-                        waitingTime,
+                        product.price.toString(),
                         style: TextStyle(color: Colors.white),
                       )
                     ],
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Provider.of<ShoppingCartProvider>(context, listen: false)
-                          .addItemToCart(
-                        ShoppingCart(
-                          imgPath: imgPath,
-                          category: category,
-                          label: label,
-                          waitingTime: waitingTime,
-                          description: "Somethings",
-                        ),
-                      );
-                    },
-                    child: Icon(
-                      Icons.shopping_cart_checkout_outlined,
-                      color: Colors.white,
-                    ),
-                  )
+                    child: ToggleIcon(),
+                  ),
                 ],
               ),
             ),
@@ -144,7 +112,7 @@ class CarouselSliderItem extends StatelessWidget {
             top: 10,
             left: 10,
             child: CategoryItem(
-              category: category,
+              category: "category",
             ),
           ),
         ],

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:food_order/components/badge.dart';
 import 'package:food_order/components/drawer/main_screen_drawer.dart';
-import 'package:food_order/model/shopping_cart_provider.dart';
 import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/navpages/search_page.dart';
 import 'package:food_order/pages/navpages/user_profile.dart';
 import 'package:food_order/pages/shopping_cart_page.dart';
+import 'package:food_order/providers/cart.dart';
+import 'package:food_order/providers/products_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,9 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => ShoppingCartProvider(),
-        )
+        ChangeNotifierProvider(create: (ctx) => ProductsProvider()),
+        ChangeNotifierProvider(create: (ctx) => Cart())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case "home":
               return MaterialPageRoute(builder: (context) => (HomePage()));
-            case "detail_page":
+            case "details_page":
               return MaterialPageRoute(
                   builder: (context) => (DetailsPage(
                         imgPath: settings.arguments.toString(),
@@ -95,41 +96,45 @@ class _MainScreenState extends State<MainScreen> {
         centerTitle: true,
         actions: [
           Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                onTap: () {
+            padding: EdgeInsets.only(right: 20.0),
+            child: Consumer<Cart>(
+              builder: (_, cart, ch) => Badge(
+                child: ch!,
+                value: cart.itemCount.toString(),
+              ),
+              child: IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
                   Navigator.of(context).pushNamed("shopping_cart_page");
                 },
-                child: Icon(
-                  Icons.shopping_cart_outlined,
-                  size: 26.0,
-                ),
-              )),
+              ),
+            ),
+          ),
         ],
       ),
       body: pages[currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        selectedFontSize: 0,
-        unselectedFontSize: 0,
-        // backgroundColor: Colors.transparent,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: currentIndex,
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Colors.grey,
-        showUnselectedLabels: false,
-        showSelectedLabels: false,
-        onTap: onTap,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Home"),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: "Search",
-          ),
-          // BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "Bar"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border_rounded), label: "Favourite"),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   selectedFontSize: 0,
+      //   unselectedFontSize: 0,
+      //   // backgroundColor: Colors.transparent,
+      //   type: BottomNavigationBarType.fixed,
+      //   currentIndex: currentIndex,
+      //   selectedItemColor: Colors.red,
+      //   unselectedItemColor: Colors.grey,
+      //   showUnselectedLabels: false,
+      //   showSelectedLabels: false,
+      //   onTap: onTap,
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Home"),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.search),
+      //       label: "Search",
+      //     ),
+      //     // BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "Bar"),
+      //     BottomNavigationBarItem(
+      //         icon: Icon(Icons.favorite_border_rounded), label: "Favourite"),
+      //   ],
+      // ),
     );
   }
 }
