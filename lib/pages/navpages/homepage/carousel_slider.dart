@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/toggle_icon.dart';
 import 'package:food_order/providers/product.dart';
-import 'package:food_order/providers/products_provider.dart';
+import 'package:food_order/providers/products.dart';
 import 'package:provider/provider.dart';
 
 const double BORDER_RADIUS = 20;
@@ -19,20 +19,40 @@ class CarouselSlider extends StatelessWidget {
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
-          for (var item in products)
-            Row(
-              children: [
-                SizedBox(
-                  width: 20,
-                ),
-                ChangeNotifierProvider(
-                  create: (ctx) => item,
-                  child: CarouselSliderItem(
-                    product: item,
+          if (productData.getCategory == "All") ...[
+            for (var item in products)
+              Row(
+                children: [
+                  SizedBox(
+                    width: 20,
                   ),
+                  ChangeNotifierProvider.value(
+                    value: item,
+                    child: CarouselSliderItem(
+                      product: item,
+                    ),
+                  )
+                ],
+              ),
+          ] else ...[
+            for (var item in products) ...[
+              if (item.category == productData.getCategory) ...[
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    ChangeNotifierProvider.value(
+                      value: item,
+                      child: CarouselSliderItem(
+                        product: item,
+                      ),
+                    )
+                  ],
                 )
-              ],
-            ),
+              ]
+            ]
+          ],
           SizedBox(width: 20),
         ],
       ),

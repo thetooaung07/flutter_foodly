@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/star_rating_component.dart';
 import 'package:food_order/providers/cart.dart';
-import 'package:food_order/providers/products_provider.dart';
+import 'package:food_order/providers/products.dart';
 import 'package:provider/provider.dart';
 
 class TrendingOrder extends StatelessWidget {

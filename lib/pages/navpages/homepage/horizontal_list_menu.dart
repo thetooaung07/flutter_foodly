@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:food_order/providers/products_provider.dart';
+import 'package:food_order/providers/products.dart';
+import 'package:provider/provider.dart';
 
 class HorizontalListMenu extends StatefulWidget {
   const HorizontalListMenu({Key? key}) : super(key: key);
@@ -13,6 +14,8 @@ class _HorizontalListMenuState extends State<HorizontalListMenu> {
 
   @override
   Widget build(BuildContext context) {
+    final products = Provider.of<Products>(context);
+
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 40,
@@ -24,6 +27,7 @@ class _HorizontalListMenuState extends State<HorizontalListMenu> {
                 isSelected: index == currentIdx ? true : false,
                 label: CATEGORY_LIST[index],
                 onPressed: () {
+                  products.setSelectedCategory = CATEGORY_LIST[index];
                   setState(() {
                     currentIdx = index;
                   });

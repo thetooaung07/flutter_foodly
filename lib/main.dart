@@ -5,9 +5,9 @@ import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/navpages/search_page.dart';
 import 'package:food_order/pages/navpages/user_profile.dart';
-import 'package:food_order/pages/shopping_cart_page.dart';
+import 'package:food_order/pages/shopping_cart_page/shopping_cart_page.dart';
 import 'package:food_order/providers/cart.dart';
-import 'package:food_order/providers/products_provider.dart';
+import 'package:food_order/providers/products.dart';
 import 'package:provider/provider.dart';
 
 void main() {
