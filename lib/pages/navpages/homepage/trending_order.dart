@@ -9,7 +9,7 @@ class TrendingOrder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final products = Provider.of<ProductsProvider>(context).items;
+    final products = Provider.of<Products>(context).items;
 
     return Container(
         margin: EdgeInsets.all(15),

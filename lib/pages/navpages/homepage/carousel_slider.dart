@@ -11,7 +11,7 @@ class CarouselSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final productData = Provider.of<ProductsProvider>(context);
+    final productData = Provider.of<Products>(context);
     final products = productData.items;
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -41,8 +41,6 @@ class CarouselSlider extends StatelessWidget {
 }
 
 class CarouselSliderItem extends StatelessWidget {
-  // ShoppingCart()
-
   final Product product;
 
   const CarouselSliderItem({
@@ -112,7 +110,7 @@ class CarouselSliderItem extends StatelessWidget {
             top: 10,
             left: 10,
             child: CategoryItem(
-              category: "category",
+              category: product.category.toString(),
             ),
           ),
         ],

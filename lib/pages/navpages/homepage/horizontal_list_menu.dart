@@ -1,14 +1,5 @@
 import 'package:flutter/material.dart';
-
-const CATEGORY_LIST = [
-  "Recommend",
-  "Junk Food",
-  "Vegan",
-  "Beef",
-  "Snack",
-  "Something",
-  "Lorem"
-];
+import 'package:food_order/providers/products_provider.dart';
 
 class HorizontalListMenu extends StatefulWidget {
   const HorizontalListMenu({Key? key}) : super(key: key);
