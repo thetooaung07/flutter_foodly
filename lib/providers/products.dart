@@ -26,7 +26,8 @@ class Products with ChangeNotifier {
     Product(
       id: "p1",
       title: "Home BBQ",
-      description: "description",
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
       price: 12.99,
       imageUrl: "assets/images/bbq.jpg",
       category: "Recommend",
@@ -34,40 +35,45 @@ class Products with ChangeNotifier {
     Product(
       id: "p2",
       title: "Sandwich",
-      description: "description",
-      price: 12.99,
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+      price: 9.99,
       imageUrl: "assets/images/sandwich.jpg",
       category: "Junk Food",
     ),
     Product(
       id: "p3",
       title: "Mala Xiang Guo",
-      description: "description",
-      price: 12.99,
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+      price: 25.99,
       imageUrl: "assets/images/mala_xg.png",
       category: "Snack",
     ),
     Product(
       id: "p4",
       title: "Hot Pot",
-      description: "description",
-      price: 12.99,
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+      price: 20.99,
       imageUrl: "assets/images/hot_pot.jpeg",
       category: "Recommend",
     ),
     Product(
       id: "p5",
       title: "Pork Noodle",
-      description: "description",
-      price: 12.99,
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+      price: 5.99,
       imageUrl: "assets/images/pork_noodle.jpg",
       category: "Junk Food",
     ),
     Product(
       id: "p6",
       title: "Burger",
-      description: "description",
-      price: 12.99,
+      description:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+      price: 9.99,
       imageUrl: "assets/images/burger.jpg",
       category: "Snack",
     ),
@@ -75,6 +81,10 @@ class Products with ChangeNotifier {
 
   List<Product> get items {
     return [..._items];
+  }
+
+  Product getProductById(String id) {
+    return _items.firstWhere((element) => element.id == id);
   }
 
   void addProduct() {

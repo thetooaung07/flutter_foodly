@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/star_rating_component.dart';
+import 'package:food_order/providers/products.dart';
 import 'package:food_order/utils/constants.dart';
+import 'package:provider/provider.dart';
 
 class DetailsPage extends StatelessWidget {
-  final String imgPath;
+  final String productId;
 
-  const DetailsPage({Key? key, required this.imgPath}) : super(key: key);
+  const DetailsPage({Key? key, required this.productId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final productData = Provider.of<Products>(context);
+    final detailProduct = productData.getProductById(productId);
+
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -27,7 +32,7 @@ class DetailsPage extends StatelessWidget {
                       image: DecorationImage(
                         alignment: Alignment.center,
                         repeat: ImageRepeat.noRepeat,
-                        image: new AssetImage(imgPath),
+                        image: new AssetImage(detailProduct.imageUrl),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -79,7 +84,7 @@ class DetailsPage extends StatelessWidget {
               Container(
                 margin: EdgeInsets.fromLTRB(20, 25, 20, 5),
                 child: Text(
-                  "Mala Hotpot",
+                  detailProduct.title,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
                 ),
               ),
@@ -102,8 +107,7 @@ class DetailsPage extends StatelessWidget {
               ),
               Container(
                 margin: EdgeInsets.all(20),
-                child: Text(
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. "),
+                child: Text(detailProduct.description),
               )
             ],
           ),
@@ -124,7 +128,7 @@ class DetailsPage extends StatelessWidget {
                       style: TextStyle(fontSize: 14),
                     ),
                     Text(
-                      r"$15.59",
+                      "\$${detailProduct.price}",
                       style: TextStyle(fontSize: 20),
                     ),
                   ],

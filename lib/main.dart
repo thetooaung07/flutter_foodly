@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
             case "details_page":
               return MaterialPageRoute(
                   builder: (context) => (DetailsPage(
-                        imgPath: settings.arguments.toString(),
+                        productId: settings.arguments.toString(),
                       )));
             case "shopping_cart_page":
               return MaterialPageRoute(

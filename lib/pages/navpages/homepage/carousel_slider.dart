@@ -72,8 +72,7 @@ class CarouselSliderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(context)
-            .pushNamed("details_page", arguments: product.imageUrl);
+        Navigator.of(context).pushNamed("details_page", arguments: product.id);
       },
       child: Stack(
         children: [
@@ -114,7 +113,7 @@ class CarouselSliderItem extends StatelessWidget {
                         style: TextStyle(color: Colors.white),
                       ),
                       Text(
-                        product.price.toString(),
+                        "\$${product.price.toString()}",
                         style: TextStyle(color: Colors.white),
                       )
                     ],
