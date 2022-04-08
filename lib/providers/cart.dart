@@ -74,6 +74,8 @@ class Cart with ChangeNotifier {
       return null;
   }
 
+// Reduce Quantity of the existing CartItem
+
   void reduceQuantity(String id) {
     final result = getCartItemById(id);
     if (result == null) {
@@ -88,45 +90,12 @@ class Cart with ChangeNotifier {
             quantity: existingCartItem.quantity - 1,
             price: existingCartItem.price),
       );
-
-      print("Inside cart provider, result.quantity => ${result2.quantity}");
+      // Delete CartItem if Quantity is 0
       if (result2.quantity == 0) {
-        print("Qunatity zero time");
         deleteItem(id);
       }
     }
 
     notifyListeners();
   }
-
-  // CartItem getOrAddItem(
-  //     String productId, double price, String title, String imageUrl) {
-  //   final CartItem resultCartItem;
-
-  //   if (_items.containsKey(productId)) {
-  //     // change only quantity
-  //     resultCartItem = _items.update(
-  //       productId,
-  //       (existingCartItem) => CartItem(
-  //           id: existingCartItem.id,
-  //           title: existingCartItem.title,
-  //           imageUrl: existingCartItem.imageUrl,
-  //           quantity: existingCartItem.quantity + 1,
-  //           price: existingCartItem.price),
-  //     );
-  //   } else
-  //     resultCartItem = _items.putIfAbsent(
-  //       productId,
-  //       () => CartItem(
-  //           id: productId,
-  //           title: title,
-  //           quantity: 1,
-  //           imageUrl: imageUrl,
-  //           price: price),
-  //     );
-
-  //   print(resultCartItem.title);
-
-  //   return resultCartItem;
-  // }
 }

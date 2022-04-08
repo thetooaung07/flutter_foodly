@@ -51,25 +51,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainScreen extends StatefulWidget {
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  int currentIndex = 0;
-  List pages = [
-    HomePage(),
-    SearchPage(),
-    WishlistPage(),
-  ];
-  void onTap(int index) {
-    setState(() {
-      currentIndex = index;
-    });
-  }
-
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+class MainScreen extends StatelessWidget {
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +95,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      body: pages[currentIndex],
+      body: HomePage(),
       // bottomNavigationBar: BottomNavigationBar(
       //   selectedFontSize: 0,
       //   unselectedFontSize: 0,

@@ -190,7 +190,6 @@ class _OrderCounterState extends State<OrderCounter> {
                 ? null
                 : () {
                     cart.reduceQuantity(widget.product.id);
-                    print(cartItem.quantity);
                   },
             child: Container(
               width: 35,

@@ -7,20 +7,15 @@ class ShoppingCartProvider extends ChangeNotifier {
   void addItemToCart(ShoppingCart spc) {
     spc.isInCart = true;
     cartList.add(spc);
-    // for (var i = 0; i < cartList.length; i++) {
-    //   print(cartList[i]);
-    // }
     getLengthOfShoppingCart();
     notifyListeners();
   }
 
   bool isInCart(String imgPath) {
-    print("isInCart($imgPath)");
     return cartList.map((e) => e.imgPath == imgPath).length == 0 ? false : true;
   }
 
   int getLengthOfShoppingCart() {
-    print(cartList.length);
     return cartList.length;
   }
 

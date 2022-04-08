@@ -32,7 +32,6 @@ class Product with ChangeNotifier {
 
   void set setCount(int num) {
     _count = num;
-    print("setCount $num");
     notifyListeners();
   }
 }

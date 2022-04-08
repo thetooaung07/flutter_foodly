@@ -94,22 +94,4 @@ class Products with ChangeNotifier {
   List<Product> get favouriteItems {
     return _items.where((el) => el.isInCart).toList();
   }
-
-  // List<Product> filterByCategory(String category) {
-  //   print("FilterbyCategory is called");
-  //   List<Product> result = [];
-
-  //   _items.forEach((element) {
-  //     if (element.category == category) {
-  //       print("element.id ${element.id}");
-  //       result.add(element);
-  //     } else
-  //       return;
-  //   });
-
-  //   print("result.length ${result.length}");
-
-  //   notifyListeners();
-  //   return result;
-  // }
 }
