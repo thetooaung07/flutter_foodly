@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/star_rating_component.dart';
+import 'package:food_order/providers/cart.dart';
+import 'package:food_order/providers/product.dart';
 import 'package:food_order/providers/products.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +15,8 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final productData = Provider.of<Products>(context);
     final detailProduct = productData.getProductById(productId);
+    final cart = Provider.of<Cart>(context);
+    final cartItem = cart.getCartItemById(productId);
 
     return Scaffold(
       body: Column(
@@ -101,7 +105,7 @@ class DetailsPage extends StatelessWidget {
                       reviewsCount: 342,
                     ),
 
-                    OrderCounter(),
+                    OrderCounter(product: detailProduct),
                   ],
                 ),
               ),
@@ -128,7 +132,7 @@ class DetailsPage extends StatelessWidget {
                       style: TextStyle(fontSize: 14),
                     ),
                     Text(
-                      "\$${detailProduct.price}",
+                      "\$${detailProduct.price * (cartItem == null ? 0 : cartItem.quantity)}",
                       style: TextStyle(fontSize: 20),
                     ),
                   ],
@@ -139,7 +143,9 @@ class DetailsPage extends StatelessWidget {
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           primary: Color.fromRGBO(15, 23, 42, 1)),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed("shopping_cart_page");
+                      },
                       child: Text(
                         "Check Out",
                         style: TextStyle(fontSize: 20),
@@ -155,16 +161,19 @@ class DetailsPage extends StatelessWidget {
 }
 
 class OrderCounter extends StatefulWidget {
-  const OrderCounter({Key? key}) : super(key: key);
+  final Product product;
+  const OrderCounter({Key? key, required this.product}) : super(key: key);
 
   @override
   State<OrderCounter> createState() => _OrderCounterState();
 }
 
 class _OrderCounterState extends State<OrderCounter> {
-  int count = 1;
+  int count = 0;
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+    final cartItem = cart.getCartItemById(widget.product.id);
     return Container(
       height: 35,
       width: 120,
@@ -177,14 +186,12 @@ class _OrderCounterState extends State<OrderCounter> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: () {
-              setState(() {
-                if (count == 1) {
-                  return;
-                }
-                count--;
-              });
-            },
+            onTap: cartItem == null
+                ? null
+                : () {
+                    cart.reduceQuantity(widget.product.id);
+                    print(cartItem.quantity);
+                  },
             child: Container(
               width: 35,
               height: 35,
@@ -199,12 +206,11 @@ class _OrderCounterState extends State<OrderCounter> {
               ),
             ),
           ),
-          Text(count.toString()),
+          Text(cartItem == null ? "0" : cartItem.quantity.toString()),
           GestureDetector(
             onTap: () {
-              setState(() {
-                count++;
-              });
+              cart.addItem(widget.product.id, widget.product.price,
+                  widget.product.title, widget.product.imageUrl);
             },
             child: Container(
               width: 35,

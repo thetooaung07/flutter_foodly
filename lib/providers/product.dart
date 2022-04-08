@@ -23,4 +23,16 @@ class Product with ChangeNotifier {
     isInCart = !isInCart;
     notifyListeners();
   }
+
+  int _count = 0;
+
+  int get getCount {
+    return _count;
+  }
+
+  void set setCount(int num) {
+    _count = num;
+    print("setCount $num");
+    notifyListeners();
+  }
 }

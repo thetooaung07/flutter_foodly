@@ -45,7 +45,7 @@ class TrendingOrder extends StatelessWidget {
                       title: item.title),
                   icon: Icon(Icons.keyboard_arrow_right_rounded),
                   onPressedCard: () => Navigator.of(context)
-                      .pushNamed("details_page", arguments: item.imageUrl)),
+                      .pushNamed("details_page", arguments: item.id)),
           ],
         ));
   }

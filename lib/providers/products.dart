@@ -17,7 +17,6 @@ class Products with ChangeNotifier {
   }
 
   void set setSelectedCategory(String category) {
-    print("Setter is called ${category}");
     getCategory = category;
     notifyListeners();
   }
