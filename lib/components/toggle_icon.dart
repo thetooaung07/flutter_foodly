@@ -4,6 +4,8 @@ import 'package:food_order/providers/product.dart';
 import 'package:provider/provider.dart';
 
 class ToggleIcon extends StatelessWidget {
+  const ToggleIcon({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);

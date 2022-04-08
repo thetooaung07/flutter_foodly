@@ -12,7 +12,7 @@ class ShoppingCartProvider extends ChangeNotifier {
   }
 
   bool isInCart(String imgPath) {
-    return cartList.map((e) => e.imgPath == imgPath).length == 0 ? false : true;
+    return cartList.map((e) => e.imgPath == imgPath).isEmpty ? false : true;
   }
 
   int getLengthOfShoppingCart() {

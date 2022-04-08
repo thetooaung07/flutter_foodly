@@ -14,7 +14,7 @@ class DrawerHeaderComponent extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 50,
                 backgroundImage: AssetImage("assets/images/anime_profile.png"),
               ),
@@ -22,18 +22,18 @@ class DrawerHeaderComponent extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).pop();
                 },
-                child: Icon(Icons.exit_to_app),
+                child: const Icon(Icons.exit_to_app),
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
-          Text("Customer"),
-          SizedBox(
+          const Text("Customer"),
+          const SizedBox(
             height: 10,
           ),
-          Text("customer07@gmail.com"),
+          const Text("customer07@gmail.com"),
         ],
       ),
     );

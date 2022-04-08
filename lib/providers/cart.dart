@@ -70,8 +70,9 @@ class Cart with ChangeNotifier {
   CartItem? getCartItemById(String id) {
     if (_items.containsKey(id)) {
       return _items[id]!;
-    } else
+    } else {
       return null;
+    }
   }
 
 // Reduce Quantity of the existing CartItem

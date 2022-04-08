@@ -8,18 +8,18 @@ class ShoppingCartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.fromLTRB(20, 15, 20, 0),
-      padding: EdgeInsets.only(right: 20),
+      margin: const EdgeInsets.fromLTRB(20, 15, 20, 0),
+      padding: const EdgeInsets.only(right: 20),
       decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
-          boxShadow: [
+          color: const Color.fromARGB(255, 255, 255, 255),
+          boxShadow: const [
             BoxShadow(
                 color: Color.fromARGB(143, 117, 117, 117),
                 offset: Offset(1, 1.5), //(x,y)
                 blurRadius: 2.0,
                 spreadRadius: 0),
           ],
-          border: Border.all(color: Color.fromARGB(64, 0, 0, 0)),
+          border: Border.all(color: const Color.fromARGB(64, 0, 0, 0)),
           borderRadius: BorderRadius.circular(20)),
       child: IntrinsicHeight(
         child: Row(
@@ -29,19 +29,19 @@ class ShoppingCartItem extends StatelessWidget {
               height: 75,
               width: 100,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(20),
                   bottomLeft: Radius.circular(20),
                 ),
                 image: DecorationImage(
                   // alignment: Alignment.centerRight,
                   repeat: ImageRepeat.noRepeat,
-                  image: new AssetImage(data.imageUrl),
+                  image: AssetImage(data.imageUrl),
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 30,
             ),
             Expanded(
@@ -50,18 +50,20 @@ class ShoppingCartItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(data.title),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Text("\$${data.price} x ${data.quantity}"),
                 ],
               ),
             ),
-            VerticalDivider(
+            const VerticalDivider(
+              indent: 7,
+              endIndent: 7,
               color: Color.fromARGB(255, 0, 0, 0),
               thickness: 2,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             Text("\$${data.price * data.quantity}"),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/providers/product.dart';
 
-const CATEGORY_LIST = [
+const categoryListConstant = [
   "All",
   "Recommend",
   "Junk Food",
@@ -11,17 +11,17 @@ const CATEGORY_LIST = [
 ];
 
 class Products with ChangeNotifier {
-  String getCategory = CATEGORY_LIST[0];
+  String getCategory = categoryListConstant[0];
   String get getSelectedCategory {
     return getCategory;
   }
 
-  void set setSelectedCategory(String category) {
+  set setSelectedCategory(String category) {
     getCategory = category;
     notifyListeners();
   }
 
-  List<Product> _items = [
+  final List<Product> _items = [
     Product(
       id: "p1",
       title: "Home BBQ",

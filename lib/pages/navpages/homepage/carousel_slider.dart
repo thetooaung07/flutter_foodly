@@ -4,7 +4,7 @@ import 'package:food_order/providers/product.dart';
 import 'package:food_order/providers/products.dart';
 import 'package:provider/provider.dart';
 
-const double BORDER_RADIUS = 20;
+const double borderRadiusConstant = 20;
 
 class CarouselSlider extends StatelessWidget {
   const CarouselSlider({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class CarouselSlider extends StatelessWidget {
     final productData = Provider.of<Products>(context);
     final products = productData.items;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       height: 250,
       child: ListView(
         scrollDirection: Axis.horizontal,
@@ -23,7 +23,7 @@ class CarouselSlider extends StatelessWidget {
             for (var item in products)
               Row(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   ChangeNotifierProvider.value(
@@ -39,7 +39,7 @@ class CarouselSlider extends StatelessWidget {
               if (item.category == productData.getCategory) ...[
                 Row(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 20,
                     ),
                     ChangeNotifierProvider.value(
@@ -53,7 +53,7 @@ class CarouselSlider extends StatelessWidget {
               ]
             ]
           ],
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
         ],
       ),
     );
@@ -79,13 +79,13 @@ class CarouselSliderItem extends StatelessWidget {
           Container(
             width: 200,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(BORDER_RADIUS),
+              borderRadius: BorderRadius.circular(borderRadiusConstant),
               color: Colors.black38,
               image: DecorationImage(
                 alignment: Alignment.center,
                 matchTextDirection: true,
                 repeat: ImageRepeat.noRepeat,
-                image: new AssetImage(product.imageUrl),
+                image: AssetImage(product.imageUrl),
                 fit: BoxFit.cover,
               ),
             ),
@@ -95,12 +95,12 @@ class CarouselSliderItem extends StatelessWidget {
             left: 0,
             right: 0,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              decoration: BoxDecoration(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              decoration: const BoxDecoration(
                   color: Color.fromARGB(153, 0, 0, 0),
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(BORDER_RADIUS),
-                    bottomRight: Radius.circular(BORDER_RADIUS),
+                    bottomLeft: Radius.circular(borderRadiusConstant),
+                    bottomRight: Radius.circular(borderRadiusConstant),
                   )),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -110,16 +110,16 @@ class CarouselSliderItem extends StatelessWidget {
                     children: [
                       Text(
                         product.title,
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                       Text(
                         "\$${product.price.toString()}",
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       )
                     ],
                   ),
                   GestureDetector(
-                    child: ToggleIcon(),
+                    child: const ToggleIcon(),
                   ),
                 ],
               ),
@@ -146,14 +146,14 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.fromLTRB(10, 3, 10, 3),
+      padding: const EdgeInsets.fromLTRB(10, 3, 10, 3),
       decoration: BoxDecoration(
-        color: Color.fromARGB(153, 0, 0, 0),
+        color: const Color.fromARGB(153, 0, 0, 0),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
         category,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
     );
   }

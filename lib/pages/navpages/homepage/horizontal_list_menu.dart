@@ -17,7 +17,7 @@ class _HorizontalListMenuState extends State<HorizontalListMenu> {
     final products = Provider.of<Products>(context);
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       height: 40,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -56,13 +56,13 @@ class HorizontalListItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isSelected!
-              ? Color.fromRGBO(238, 77, 42, 1)
-              : Color.fromRGBO(245, 247, 251, 1),
+              ? const Color.fromRGBO(238, 77, 42, 1)
+              : const Color.fromRGBO(245, 247, 251, 1),
           // border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(20),
         ),
-        margin: EdgeInsets.only(left: 10),
-        padding: EdgeInsets.symmetric(horizontal: 15),
+        margin: const EdgeInsets.only(left: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: Text(
             label,

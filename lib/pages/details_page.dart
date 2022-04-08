@@ -36,7 +36,7 @@ class DetailsPage extends StatelessWidget {
                       image: DecorationImage(
                         alignment: Alignment.center,
                         repeat: ImageRepeat.noRepeat,
-                        image: new AssetImage(detailProduct.imageUrl),
+                        image: AssetImage(detailProduct.imageUrl),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -51,11 +51,11 @@ class DetailsPage extends StatelessWidget {
                       child: Container(
                         width: 40,
                         height: 40,
-                        decoration: BoxDecoration(
-                          color: ButtonBg,
+                        decoration: const BoxDecoration(
+                          color: buttonBg,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.keyboard_arrow_left_rounded,
                           color: Colors.white,
                           size: 30,
@@ -71,11 +71,11 @@ class DetailsPage extends StatelessWidget {
                       child: Container(
                         width: 40,
                         height: 40,
-                        decoration: BoxDecoration(
-                          color: ButtonBg,
+                        decoration: const BoxDecoration(
+                          color: buttonBg,
                           shape: BoxShape.circle,
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.favorite_border_rounded,
                           color: Colors.white,
                           size: 20,
@@ -86,20 +86,21 @@ class DetailsPage extends StatelessWidget {
                 ],
               ),
               Container(
-                margin: EdgeInsets.fromLTRB(20, 25, 20, 5),
+                margin: const EdgeInsets.fromLTRB(20, 25, 20, 5),
                 child: Text(
                   detailProduct.title,
-                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.w800),
+                  style: const TextStyle(
+                      fontSize: 25, fontWeight: FontWeight.w800),
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 20),
+                margin: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Rating
-                    StarRatingComponent(
+                    const StarRatingComponent(
                       rating: 4.3,
                       isReviewed: true,
                       reviewsCount: 342,
@@ -110,16 +111,16 @@ class DetailsPage extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.all(20),
+                margin: const EdgeInsets.all(20),
                 child: Text(detailProduct.description),
               )
             ],
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(20, 15, 20, 20),
+            padding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
             width: MediaQuery.of(context).size.width,
             height: 80,
-            decoration: BoxDecoration(color: Colors.transparent),
+            decoration: const BoxDecoration(color: Colors.transparent),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -127,13 +128,13 @@ class DetailsPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "Price",
                       style: TextStyle(fontSize: 14),
                     ),
                     Text(
                       "\$${detailProduct.price * (cartItem == null ? 0 : cartItem.quantity)}",
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
@@ -142,11 +143,11 @@ class DetailsPage extends StatelessWidget {
                   height: 45,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color.fromRGBO(15, 23, 42, 1)),
+                          primary: const Color.fromRGBO(15, 23, 42, 1)),
                       onPressed: () {
                         Navigator.of(context).pushNamed("shopping_cart_page");
                       },
-                      child: Text(
+                      child: const Text(
                         "Check Out",
                         style: TextStyle(fontSize: 20),
                       )),
@@ -180,7 +181,7 @@ class _OrderCounterState extends State<OrderCounter> {
       // margin: EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Color.fromARGB(61, 235, 235, 235),
+        color: const Color.fromARGB(61, 235, 235, 235),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,11 +195,11 @@ class _OrderCounterState extends State<OrderCounter> {
             child: Container(
               width: 35,
               height: 35,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(167, 0, 0, 0),
                 shape: BoxShape.circle,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.horizontal_rule_outlined,
                 color: Colors.white,
                 size: 20,
@@ -214,11 +215,11 @@ class _OrderCounterState extends State<OrderCounter> {
             child: Container(
               width: 35,
               height: 35,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(166, 0, 0, 0),
                 shape: BoxShape.circle,
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.add,
                 color: Colors.white,
                 size: 20,

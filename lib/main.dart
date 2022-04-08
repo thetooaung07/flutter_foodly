@@ -3,8 +3,6 @@ import 'package:food_order/components/badge.dart';
 import 'package:food_order/components/drawer/main_screen_drawer.dart';
 import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
-import 'package:food_order/pages/navpages/search_page.dart';
-import 'package:food_order/pages/navpages/user_profile.dart';
 import 'package:food_order/pages/shopping_cart_page/shopping_cart_page.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
@@ -30,7 +28,8 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: (settings) {
           switch (settings.name) {
             case "home":
-              return MaterialPageRoute(builder: (context) => (HomePage()));
+              return MaterialPageRoute(
+                  builder: (context) => (const HomePage()));
             case "details_page":
               return MaterialPageRoute(
                   builder: (context) => (DetailsPage(
@@ -38,9 +37,10 @@ class MyApp extends StatelessWidget {
                       )));
             case "shopping_cart_page":
               return MaterialPageRoute(
-                  builder: (context) => (ShoppingCartPage()));
+                  builder: (context) => (const ShoppingCartPage()));
             default:
-              return MaterialPageRoute(builder: (context) => (HomePage()));
+              return MaterialPageRoute(
+                  builder: (context) => (const HomePage()));
           }
         },
         title: 'Flutter Demo',
@@ -54,18 +54,20 @@ class MyApp extends StatelessWidget {
 class MainScreen extends StatelessWidget {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  MainScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      drawer: MainScreenDrawer(),
+      drawer: const MainScreenDrawer(),
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.space_dashboard_rounded),
+          icon: const Icon(Icons.space_dashboard_rounded),
           onPressed: () => scaffoldKey.currentState?.openDrawer(),
         ),
         title: Column(
-          children: [
+          children: const [
             Text(
               "Location",
               style: TextStyle(fontSize: 13),
@@ -79,14 +81,14 @@ class MainScreen extends StatelessWidget {
         centerTitle: true,
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 20.0),
+            padding: const EdgeInsets.only(right: 20.0),
             child: Consumer<Cart>(
               builder: (_, cart, ch) => Badge(
                 child: ch!,
                 value: cart.itemCount.toString(),
               ),
               child: IconButton(
-                icon: Icon(Icons.shopping_cart),
+                icon: const Icon(Icons.shopping_cart),
                 onPressed: () {
                   Navigator.of(context).pushNamed("shopping_cart_page");
                 },
@@ -95,7 +97,7 @@ class MainScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: HomePage(),
+      body: const HomePage(),
       // bottomNavigationBar: BottomNavigationBar(
       //   selectedFontSize: 0,
       //   unselectedFontSize: 0,

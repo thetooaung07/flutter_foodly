@@ -12,7 +12,7 @@ class ShoppingCartPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Shopping Cart "),
+        title: const Text("Shopping Cart "),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,29 +29,29 @@ class ShoppingCartPage extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.fromLTRB(20, 15, 20, 20),
+            padding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
             width: MediaQuery.of(context).size.width,
             height: 80,
-            decoration: BoxDecoration(color: Colors.transparent),
+            decoration: const BoxDecoration(color: Colors.transparent),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Total Price",
                   style: TextStyle(fontSize: 14),
                 ),
                 Text(
                   "\$${cart.totalAmount}",
-                  style: TextStyle(fontSize: 20),
+                  style: const TextStyle(fontSize: 20),
                 ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: 45,
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          primary: Color.fromRGBO(15, 23, 42, 1)),
+                          primary: const Color.fromRGBO(15, 23, 42, 1)),
                       onPressed: () {},
-                      child: Text(
+                      child: const Text(
                         "Check Out",
                         style: TextStyle(fontSize: 20),
                       )),

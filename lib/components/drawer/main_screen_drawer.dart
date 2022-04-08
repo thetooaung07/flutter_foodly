@@ -10,15 +10,15 @@ class MainScreenDrawer extends StatelessWidget {
     return Drawer(
       // backgroundColor: Colors.black,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
-            DrawerHeaderComponent(),
-            SizedBox(
+            const DrawerHeaderComponent(),
+            const SizedBox(
               width: double.infinity,
               child: Divider(
                 thickness: 1,
@@ -26,7 +26,7 @@ class MainScreenDrawer extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             DrawerItem(
@@ -34,14 +34,14 @@ class MainScreenDrawer extends StatelessWidget {
               onPressed: () {},
               icon: Icons.notifications_none_rounded,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             DrawerItem(
                 label: "Chat",
                 onPressed: () {},
                 icon: Icons.messenger_outline_rounded),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             DrawerItem(
@@ -49,7 +49,7 @@ class MainScreenDrawer extends StatelessWidget {
               onPressed: () {},
               icon: Icons.access_time,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             DrawerItem(
@@ -57,7 +57,7 @@ class MainScreenDrawer extends StatelessWidget {
               onPressed: () {},
               icon: Icons.error_outline_rounded,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             DrawerItem(
@@ -65,7 +65,7 @@ class MainScreenDrawer extends StatelessWidget {
               onPressed: () {},
               icon: Icons.settings_outlined,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
           ],

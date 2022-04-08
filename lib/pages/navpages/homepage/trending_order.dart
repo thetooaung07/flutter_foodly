@@ -12,13 +12,13 @@ class TrendingOrder extends StatelessWidget {
     final products = Provider.of<Products>(context).items;
 
     return Container(
-        margin: EdgeInsets.all(15),
+        margin: const EdgeInsets.all(15),
         child: Column(
           children: [
             Align(
               alignment: Alignment.centerLeft,
               child: Row(
-                children: [
+                children: const [
                   Padding(
                     padding: EdgeInsets.only(left: 7),
                     child: Text(
@@ -32,7 +32,7 @@ class TrendingOrder extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             for (var item in products)
@@ -43,7 +43,7 @@ class TrendingOrder extends StatelessWidget {
                       quantity: 1,
                       imageUrl: item.imageUrl,
                       title: item.title),
-                  icon: Icon(Icons.keyboard_arrow_right_rounded),
+                  icon: const Icon(Icons.keyboard_arrow_right_rounded),
                   onPressedCard: () => Navigator.of(context)
                       .pushNamed("details_page", arguments: item.id)),
           ],
@@ -68,14 +68,14 @@ class TrendingOrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: InkWell(
-        onTap: onPressedCard ?? null,
+        onTap: onPressedCard,
         child: Stack(
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(
                   left: 10.0, top: 5.0, right: 10.0, bottom: 5.0),
               child: ConstrainedBox(
-                constraints: BoxConstraints(
+                constraints: const BoxConstraints(
                   minHeight: 70,
                 ),
                 child: Row(
@@ -86,7 +86,7 @@ class TrendingOrderCard extends StatelessWidget {
                       backgroundImage: AssetImage(data.imageUrl),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(8.0, 5.0, 0.0, 5.0),
+                      padding: const EdgeInsets.fromLTRB(8.0, 5.0, 0.0, 5.0),
                       width: MediaQuery.of(context).size.width * .60,
                       color: Colors.transparent,
                       child: Column(
@@ -98,7 +98,7 @@ class TrendingOrderCard extends StatelessWidget {
                             overflow: TextOverflow.ellipsis,
                             // style: CustomTextStyle.textSubtitle2BlackShades(context),
                           ),
-                          StarRatingComponent(
+                          const StarRatingComponent(
                             rating: 4.3,
                             ratingTextStyle: TextStyle(fontSize: 14),
                           ),
@@ -106,7 +106,7 @@ class TrendingOrderCard extends StatelessWidget {
                       ),
                     ),
                     GestureDetector(
-                      onTap: onPressedIcon ?? null,
+                      onTap: onPressedIcon,
                       child: icon,
                     )
                   ],
