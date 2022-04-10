@@ -4,12 +4,14 @@ class DrawerItem extends StatelessWidget {
   final String label;
   final Function() onPressed;
   final IconData icon;
+  final Widget? customWidget;
 
   const DrawerItem(
       {Key? key,
       required this.label,
       required this.onPressed,
-      required this.icon})
+      required this.icon,
+      this.customWidget})
       : super(key: key);
 
   @override
@@ -28,7 +30,7 @@ class DrawerItem extends StatelessWidget {
           ),
           Text(
             label,
-            style: const TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 18),
           )
         ]),
       ),

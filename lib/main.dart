@@ -6,6 +6,7 @@ import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/shopping_cart_page/shopping_cart_page.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
+import 'package:food_order/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,35 +20,41 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (ctx) => Products()),
-        ChangeNotifierProvider(create: (ctx) => Cart())
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case "home":
-              return MaterialPageRoute(
-                  builder: (context) => (const HomePage()));
-            case "details_page":
-              return MaterialPageRoute(
-                  builder: (context) => (DetailsPage(
-                        productId: settings.arguments.toString(),
-                      )));
-            case "shopping_cart_page":
-              return MaterialPageRoute(
-                  builder: (context) => (const ShoppingCartPage()));
-            default:
-              return MaterialPageRoute(
-                  builder: (context) => (const HomePage()));
-          }
-        },
-        title: 'Flutter Demo',
-        theme: ThemeData(primarySwatch: Colors.red),
-        home: MainScreen(),
-      ),
-    );
+        providers: [
+          ChangeNotifierProvider(create: (ctx) => Products()),
+          ChangeNotifierProvider(create: (ctx) => Cart()),
+          ChangeNotifierProvider(create: (ctx) => ThemeProvider())
+        ],
+        builder: (context, child) {
+          final themeProvider = Provider.of<ThemeProvider>(context);
+
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: (settings) {
+              switch (settings.name) {
+                case "home":
+                  return MaterialPageRoute(
+                      builder: (context) => (const HomePage()));
+                case "details_page":
+                  return MaterialPageRoute(
+                      builder: (context) => (DetailsPage(
+                            productId: settings.arguments.toString(),
+                          )));
+                case "shopping_cart_page":
+                  return MaterialPageRoute(
+                      builder: (context) => (const ShoppingCartPage()));
+                default:
+                  return MaterialPageRoute(
+                      builder: (context) => (const HomePage()));
+              }
+            },
+            title: 'Shopy',
+            themeMode: themeProvider.themeMode,
+            theme: MyTheme.lightTheme,
+            darkTheme: MyTheme.darkTheme,
+            home: MainScreen(),
+          );
+        });
   }
 }
 

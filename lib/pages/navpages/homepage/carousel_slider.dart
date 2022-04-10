@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_order/components/toggle_icon.dart';
 import 'package:food_order/providers/product.dart';
 import 'package:food_order/providers/products.dart';
+import 'package:food_order/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 const double borderRadiusConstant = 20;
@@ -152,7 +153,9 @@ class CategoryItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
-        category,
+        categoryEmoji.containsKey(category)
+            ? "${categoryEmoji[category]}  $category"
+            : "$category",
         style: const TextStyle(color: Colors.white),
       ),
     );

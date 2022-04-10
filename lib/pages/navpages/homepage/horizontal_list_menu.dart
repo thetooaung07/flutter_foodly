@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/providers/products.dart';
+import 'package:food_order/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 class HorizontalListMenu extends StatefulWidget {
@@ -21,13 +22,13 @@ class _HorizontalListMenuState extends State<HorizontalListMenu> {
       height: 40,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: CATEGORY_LIST.length,
+          itemCount: categoryListConstant.length,
           itemBuilder: (BuildContext context, int index) {
             return HorizontalListItem(
                 isSelected: index == currentIdx ? true : false,
-                label: CATEGORY_LIST[index],
+                label: categoryListConstant[index],
                 onPressed: () {
-                  products.setSelectedCategory = CATEGORY_LIST[index];
+                  products.setSelectedCategory = categoryListConstant[index];
                   setState(() {
                     currentIdx = index;
                   });
@@ -65,7 +66,9 @@ class HorizontalListItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: Text(
-            label,
+            categoryEmoji.containsKey(label)
+                ? "${categoryEmoji[label]}  $label"
+                : "$label",
             style: TextStyle(
                 fontSize: 14, color: isSelected! ? Colors.white : Colors.black),
           ),

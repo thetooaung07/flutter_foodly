@@ -30,7 +30,7 @@ class Product with ChangeNotifier {
     return _count;
   }
 
-  void set setCount(int num) {
+  set setCount(int num) {
     _count = num;
     notifyListeners();
   }
