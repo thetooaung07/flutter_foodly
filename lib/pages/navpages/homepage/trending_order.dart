@@ -18,17 +18,18 @@ class TrendingOrder extends StatelessWidget {
             Align(
               alignment: Alignment.centerLeft,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Padding(
                     padding: EdgeInsets.only(left: 7),
                     child: Text(
-                      "Trending",
+                      "Trending 🔥",
                       style: TextStyle(
                         fontSize: 20,
                       ),
                     ),
                   ),
-                  Icon(Icons.trending_up_rounded),
+                  Text("See all "),
                 ],
               ),
             ),

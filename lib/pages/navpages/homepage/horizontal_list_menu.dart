@@ -57,7 +57,7 @@ class HorizontalListItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isSelected!
-              ? Color.fromARGB(179, 123, 33, 13)
+              ? Color.fromARGB(201, 228, 33, 23)
               : const Color.fromRGBO(245, 247, 251, 1),
           // border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(20),
