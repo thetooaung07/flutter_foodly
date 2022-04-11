@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/badge.dart';
-import 'package:food_order/components/drawer/main_screen_drawer.dart';
 import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/navpages/order_history.dart';
 import 'package:food_order/pages/navpages/user_profile.dart';
+import 'package:food_order/pages/notification_page.dart';
 import 'package:food_order/pages/shopping_cart_page/shopping_cart_page.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
-import 'package:food_order/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -45,6 +44,9 @@ class MyApp extends StatelessWidget {
                 case "shopping_cart_page":
                   return MaterialPageRoute(
                       builder: (context) => (const ShoppingCartPage()));
+                case "notification_page":
+                  return MaterialPageRoute(
+                      builder: (context) => (const NotificationPage()));
                 default:
                   return MaterialPageRoute(
                       builder: (context) => (const HomePage()));
@@ -70,6 +72,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final PageController _pageController = PageController(initialPage: 0);
 
   int currentIndex = 0;
   List pages = [
@@ -79,16 +82,11 @@ class _MainScreenState extends State<MainScreen> {
     ShoppingCartPage(),
   ];
   void onTap(int index) {
-    if (index == pages.length - 1) {
-      Navigator.of(context).pushNamed("shopping_cart_page");
-      setState(() {
-        currentIndex = 0;
-      });
-    } else {
-      setState(() {
-        currentIndex = index;
-      });
-    }
+    setState(() {
+      currentIndex = index;
+      _pageController.animateToPage(index,
+          duration: Duration(milliseconds: 500), curve: Curves.ease);
+    });
   }
 
   @override
@@ -116,7 +114,20 @@ class _MainScreenState extends State<MainScreen> {
       //   ),
       //   centerTitle: true,
       // ),
-      body: pages[currentIndex],
+      body: PageView(
+        onPageChanged: (newIndex) {
+          setState(() {
+            currentIndex = newIndex;
+          });
+        },
+        controller: _pageController,
+        children: [
+          HomePage(),
+          OrderHistoryPage(),
+          UserProfilePage(),
+          ShoppingCartPage(),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 0,
         unselectedFontSize: 0,
@@ -143,12 +154,7 @@ class _MainScreenState extends State<MainScreen> {
                   child: ch!,
                   value: cart.itemCount.toString(),
                 ),
-                child: IconButton(
-                  icon: const Icon(Icons.shopping_cart),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed("shopping_cart_page");
-                  },
-                ),
+                child: const Icon(Icons.shopping_cart),
               ),
               label: "Shopping Cart"),
         ],

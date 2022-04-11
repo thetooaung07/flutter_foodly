@@ -18,26 +18,58 @@ class Badge extends StatelessWidget {
       children: [
         child,
         Positioned(
-          right: 5,
-          top: 5,
+          right: 0,
+          top: 0,
           child: Container(
-            padding: const EdgeInsets.all(2.0),
-            // color: Theme.of(context).accentColor,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              // color: color != null ? color : Theme.of(context).,
+              shape: BoxShape.circle,
+              color: value == "0" ? Colors.grey : Colors.red,
             ),
             constraints: const BoxConstraints(
-              minWidth: 16,
-              minHeight: 16,
+              minWidth: 15,
+              minHeight: 15,
             ),
             child: Text(
-              value == "0" ? "" : value,
+              value,
               textAlign: TextAlign.center,
               style: const TextStyle(
+                color: Colors.white,
                 fontSize: 10,
               ),
             ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class NotificationBadge extends StatelessWidget {
+  final Widget child;
+  final bool? isNew;
+  final Color? color;
+  const NotificationBadge({
+    Key? key,
+    required this.child,
+    this.isNew = false,
+    this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        child,
+        Positioned(
+          right: 2,
+          top: 2,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: isNew! ? Colors.red : Colors.transparent),
+            alignment: Alignment.center,
           ),
         )
       ],

@@ -6,7 +6,7 @@ class HomePageBanner extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(20, 30, 20, 20),
+      margin: const EdgeInsets.all(20),
       width: 200,
       height: 100,
       decoration: BoxDecoration(
