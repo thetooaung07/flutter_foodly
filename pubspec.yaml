@@ -37,6 +37,8 @@ dependencies:
   starlight_http_cached:
     git:
       url: https://github.com/YeMyoAung/starlight_http_cached.git
+  flutter_svg: ^1.0.3
+  dotted_border: ^2.0.0+2
 
 dev_dependencies:
   flutter_test:
