@@ -21,6 +21,7 @@ class Badge extends StatelessWidget {
           right: 0,
           top: 0,
           child: Container(
+            alignment: Alignment.center,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               color: value == "0" ? Colors.grey : Colors.red,

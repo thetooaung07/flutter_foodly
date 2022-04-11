@@ -7,7 +7,7 @@ const Color buttonBg = Color.fromARGB(153, 0, 0, 0);
 // }
 
 const Map categoryEmoji = {
-  "Recommend": "🍴",
+  "Recommend": "🥗",
   "Junk Food": "🍕",
   "Snack": "🍔",
 };

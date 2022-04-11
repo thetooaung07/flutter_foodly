@@ -9,117 +9,122 @@ class UserProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("My Account"),
       ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(20, 30, 20, 10),
-        child: Column(children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 8),
-            child: Row(children: [
-              CircleAvatar(
-                radius: 40,
-              ),
-              SizedBox(width: 20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "User",
-                    style: TextStyle(fontSize: 25),
-                  ),
-                  SubscriptionBadge(
-                    sType: "FREE",
-                  ),
-                ],
-              )
-            ]),
-          ),
-          SizedBox(height: 30),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //UserName
-                  Text("Display Name"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Jane Doe"),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Edit"),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: 20),
-
-                  //Email
-                  Text("Display Name"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Jane Doe"),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Edit"),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: 20),
-                  //Password
-                  Text("Display Name"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Jane Doe"),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Edit"),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: 20),
-                ],
-              ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(20, 30, 20, 10),
+          child: Column(children: [
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 8),
+              child: Row(children: [
+                CircleAvatar(
+                  radius: 40,
+                ),
+                SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "User",
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    SubscriptionBadge(
+                      sType: "FREE",
+                    ),
+                  ],
+                )
+              ]),
             ),
-          ),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  //UserName
-                  Text("Subscription"),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Tsks Free"),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: Text("Edit"),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 20),
-                  Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+            SizedBox(height: 20),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //UserName
+                    Text("Display Name"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("See all of Pro Benefits"),
-                        Icon(Icons.arrow_forward_rounded),
+                        Text("Jane Doe"),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text("Edit"),
+                        ),
                       ],
                     ),
-                  )
-                ],
+
+                    SizedBox(height: 15),
+
+                    //Email
+                    Text("Display Name"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Jane Doe"),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text("Edit"),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: 15),
+                    //Password
+                    Text("Display Name"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Jane Doe"),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text("Edit"),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: 15),
+                  ],
+                ),
               ),
             ),
-          ),
-        ]),
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    //UserName
+                    Text("Subscription"),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Tsks Free"),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text("Edit"),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("See all of Pro Benefits"),
+                          Icon(
+                            Icons.arrow_forward_rounded,
+                            size: 20,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ]),
+        ),
       ),
     );
   }
