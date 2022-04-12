@@ -26,7 +26,7 @@ class Products with ChangeNotifier {
       id: "p1",
       title: "Home BBQ",
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
       price: 12.99,
       imageUrl: "assets/images/bbq.jpg",
       category: "Recommend",
@@ -35,7 +35,7 @@ class Products with ChangeNotifier {
       id: "p2",
       title: "Sandwich",
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
       price: 9.99,
       imageUrl: "assets/images/sandwich.jpg",
       category: "Junk Food",
@@ -44,7 +44,7 @@ class Products with ChangeNotifier {
       id: "p3",
       title: "Mala Xiang Guo",
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
       price: 25.99,
       imageUrl: "assets/images/mala_xg.png",
       category: "Snack",
@@ -53,7 +53,7 @@ class Products with ChangeNotifier {
       id: "p4",
       title: "Hot Pot",
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
       price: 20.99,
       imageUrl: "assets/images/hot_pot.jpeg",
       category: "Recommend",
@@ -62,7 +62,7 @@ class Products with ChangeNotifier {
       id: "p5",
       title: "Pork Noodle",
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
       price: 5.99,
       imageUrl: "assets/images/pork_noodle.jpg",
       category: "Junk Food",
@@ -71,7 +71,7 @@ class Products with ChangeNotifier {
       id: "p6",
       title: "Burger",
       description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ut orci arcu. Quisque vel massa sapien. Phasellus feugiat dui congue, volutpat magna vel, consectetur magna. Nulla sodales sed ligula ultricies fermentum. Etiam dignissim sollicitudin ex in euismod. Suspendisse potenti. Proin eget fermentum ligula. Sed urna turpis, egestas in egestas at, auctor a metus. Aliquam egestas sapien at velit faucibus lacinia. ",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
       price: 9.99,
       imageUrl: "assets/images/burger.jpg",
       category: "Snack",

@@ -153,8 +153,8 @@ class CategoryItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Text(
-        categoryEmoji.containsKey(category)
-            ? "${categoryEmoji[category]}  $category"
+        categoryUtils.containsKey(category)
+            ? "${categoryUtils[category]!["emoji"]}  $category"
             : "$category",
         style: const TextStyle(color: Colors.white),
       ),

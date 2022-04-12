@@ -66,8 +66,8 @@ class HorizontalListItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: Text(
-            categoryEmoji.containsKey(label)
-                ? "${categoryEmoji[label]}  $label"
+            categoryUtils.containsKey(label)
+                ? "${categoryUtils[label]!["emoji"]}  $label"
                 : "$label",
             style: TextStyle(
                 fontSize: 14, color: isSelected! ? Colors.white : Colors.black),

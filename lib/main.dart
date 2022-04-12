@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/badge.dart';
-import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/navpages/order_history.dart';
 import 'package:food_order/pages/navpages/user_profile.dart';
 import 'package:food_order/pages/notification_page.dart';
+import 'package:food_order/pages/product_details_page.dart';
 import 'package:food_order/pages/shopping_cart_page/shopping_cart_page.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
                       builder: (context) => (const HomePage()));
                 case "details_page":
                   return MaterialPageRoute(
-                      builder: (context) => (DetailsPage(
+                      builder: (context) => (ProductDetailsPage(
                             productId: settings.arguments.toString(),
                           )));
                 case "shopping_cart_page":

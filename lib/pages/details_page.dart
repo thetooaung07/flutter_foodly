@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_order/components/star_rating_component.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/product.dart';
 import 'package:food_order/providers/products.dart';
-import 'package:food_order/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -19,145 +17,39 @@ class DetailsPage extends StatelessWidget {
     final cartItem = cart.getCartItemById(productId);
 
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Stack(
-                children: [
-                  Container(
-                    height: 300,
-                    width: MediaQuery.of(context).size.width,
-                    decoration: BoxDecoration(
-                      // borderRadius: BorderRadius.circular(BORDER_RADIUS),
-                      color: Colors.black38,
-                      image: DecorationImage(
-                        alignment: Alignment.center,
-                        repeat: ImageRepeat.noRepeat,
-                        image: AssetImage(detailProduct.imageUrl),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 30,
-                    left: 10,
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: const BoxDecoration(
-                          color: buttonBg,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.keyboard_arrow_left_rounded,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 30,
-                    right: 10,
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: const BoxDecoration(
-                          color: buttonBg,
-                          shape: BoxShape.circle,
-                        ),
-                        child: const Icon(
-                          Icons.favorite_border_rounded,
-                          color: Colors.white,
-                          size: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                margin: const EdgeInsets.fromLTRB(20, 25, 20, 5),
-                child: Text(
-                  detailProduct.title,
-                  style: const TextStyle(
-                      fontSize: 25, fontWeight: FontWeight.w800),
+        backgroundColor: Colors.black,
+        body: Stack(
+          children: [
+            Container(
+              padding: EdgeInsets.only(bottom: 20),
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height * 0.4,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                  image: AssetImage(detailProduct.imageUrl),
+                  fit: BoxFit.fitHeight,
+                  alignment: Alignment.center,
+                  matchTextDirection: true,
+                  repeat: ImageRepeat.noRepeat,
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Rating
-                    const StarRatingComponent(
-                      rating: 4.3,
-                      isReviewed: true,
-                      reviewsCount: 342,
-                    ),
-
-                    OrderCounter(product: detailProduct),
-                  ],
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.all(20),
-                child: Text(detailProduct.description),
-              )
-            ],
-          ),
-          Container(
-            padding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
-            width: MediaQuery.of(context).size.width,
-            height: 80,
-            decoration: const BoxDecoration(color: Colors.transparent),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Price",
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    Text(
-                      "\$${detailProduct.price * (cartItem == null ? 0 : cartItem.quantity)}",
-                      style: const TextStyle(fontSize: 20),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: 45,
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: const Color.fromRGBO(15, 23, 42, 1)),
-                      onPressed: () {
-                        Navigator.of(context).pushNamed("shopping_cart_page");
-                      },
-                      child: const Text(
-                        "Check Out",
-                        style: TextStyle(fontSize: 20),
-                      )),
-                )
-              ],
             ),
-          ),
-        ],
-      ),
-    );
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.7,
+                decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.7),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    )),
+              ),
+            )
+          ],
+        ));
   }
 }
 
@@ -231,3 +123,141 @@ class _OrderCounterState extends State<OrderCounter> {
     );
   }
 }
+// Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Stack(
+//                 children: [
+//                   Container(
+//                     height: MediaQuery.of(context).size.height * 0.4,
+//                     width: MediaQuery.of(context).size.width,
+//                     decoration: BoxDecoration(
+//                       // borderRadius: BorderRadius.circular(BORDER_RADIUS),
+//                       color: Colors.black38,
+//                       image: DecorationImage(
+//                         alignment: Alignment.center,
+//                         repeat: ImageRepeat.noRepeat,
+//                         image: AssetImage(detailProduct.imageUrl),
+//                         fit: BoxFit.cover,
+//                       ),
+//                     ),
+//                   ),
+//                   Positioned(
+//                     top: 30,
+//                     left: 10,
+//                     child: GestureDetector(
+//                       onTap: () {
+//                         Navigator.of(context).pop();
+//                       },
+//                       child: Container(
+//                         width: 40,
+//                         height: 40,
+//                         decoration: const BoxDecoration(
+//                           color: buttonBg,
+//                           shape: BoxShape.circle,
+//                         ),
+//                         child: const Icon(
+//                           Icons.keyboard_arrow_left_rounded,
+//                           color: Colors.white,
+//                           size: 30,
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                   Positioned(
+//                     top: 30,
+//                     right: 10,
+//                     child: GestureDetector(
+//                       onTap: () {},
+//                       child: Container(
+//                         width: 40,
+//                         height: 40,
+//                         decoration: const BoxDecoration(
+//                           color: buttonBg,
+//                           shape: BoxShape.circle,
+//                         ),
+//                         child: const Icon(
+//                           Icons.favorite_border_rounded,
+//                           color: Colors.white,
+//                           size: 20,
+//                         ),
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.fromLTRB(20, 25, 20, 5),
+//                 child: Text(
+//                   detailProduct.title,
+//                   style: const TextStyle(
+//                       fontSize: 25, fontWeight: FontWeight.w800),
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.symmetric(horizontal: 20),
+//                 child: Row(
+//                   crossAxisAlignment: CrossAxisAlignment.end,
+//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                   children: [
+//                     // Rating
+//                     const StarRatingComponent(
+//                       rating: 4.3,
+//                       isReviewed: true,
+//                       reviewsCount: 342,
+//                     ),
+
+//                     OrderCounter(product: detailProduct),
+//                   ],
+//                 ),
+//               ),
+//               Container(
+//                 margin: const EdgeInsets.all(20),
+//                 child: Text(detailProduct.description),
+//               )
+//             ],
+//           ),
+//           Container(
+//             padding: const EdgeInsets.fromLTRB(20, 15, 20, 20),
+//             width: MediaQuery.of(context).size.width,
+//             height: 80,
+//             decoration: const BoxDecoration(color: Colors.transparent),
+//             child: Row(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               children: [
+//                 Column(
+//                   mainAxisAlignment: MainAxisAlignment.center,
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     const Text(
+//                       "Price",
+//                       style: TextStyle(fontSize: 14),
+//                     ),
+//                     Text(
+//                       "\$${detailProduct.price * (cartItem == null ? 0 : cartItem.quantity)}",
+//                       style: const TextStyle(fontSize: 20),
+//                     ),
+//                   ],
+//                 ),
+//                 SizedBox(
+//                   width: MediaQuery.of(context).size.width * 0.7,
+//                   height: 45,
+//                   child: ElevatedButton(
+//                       style: ElevatedButton.styleFrom(
+//                           primary: const Color.fromRGBO(15, 23, 42, 1)),
+//                       onPressed: () {
+//                         Navigator.of(context).pushNamed("shopping_cart_page");
+//                       },
+//                       child: const Text(
+//                         "Check Out",
+//                         style: TextStyle(fontSize: 20),
+//                       )),
+//                 )
+//               ],
+//             ),
+//           ),
+//         ],
+//       ),
