@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
+import 'package:food_order/utils/constants.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetailsPage extends StatelessWidget {
@@ -29,32 +30,38 @@ class ProductDetailsPage extends StatelessWidget {
             child: SafeArea(
               child: Padding(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    InkWell(
-                        onTap: () {
+                    IconButton(
+                        onPressed: () {
                           print("On Clicked");
                           Navigator.of(context).pop();
                         },
-                        child: SvgPicture.asset(
+                        icon: SvgPicture.asset(
                           "assets/images/back_icon.svg",
                           color: Colors.white,
                         )),
                     Row(
                       children: <Widget>[
-                        SvgPicture.asset(
-                          "assets/images/heart_icon.svg",
-                          color: Colors.white,
+                        IconButton(
+                          onPressed: () {},
+                          icon: SvgPicture.asset(
+                            "assets/images/heart_icon.svg",
+                            color: Colors.white,
+                          ),
                         ),
                         SizedBox(
                           width: 20,
                         ),
-                        SvgPicture.asset(
-                          "assets/images/share_icon.svg",
-                          color: Colors.white,
+                        IconButton(
+                          onPressed: () {},
+                          icon: SvgPicture.asset(
+                            "assets/images/share_icon.svg",
+                            color: Colors.white,
+                          ),
                         ),
                       ],
                     )
@@ -82,7 +89,11 @@ class ProductDetailsPage extends StatelessWidget {
                           width: 150,
                           height: 7,
                           decoration: BoxDecoration(
-                              color: Colors.red[50],
+                              color: categoryUtils
+                                      .containsKey(detailProduct.category)
+                                  ? categoryUtils[detailProduct.category]![
+                                      "color"]
+                                  : Colors.black,
                               borderRadius: BorderRadius.circular(10)),
                         ),
                       ),
