@@ -24,7 +24,7 @@ class ToggleIcon extends StatelessWidget {
             child: Icon(
               cart.items.containsKey(product.id)
                   ? Icons.delete
-                  : Icons.favorite_border_rounded,
+                  : Icons.add_shopping_cart_rounded,
               color: Colors.white,
             ),
           )),
