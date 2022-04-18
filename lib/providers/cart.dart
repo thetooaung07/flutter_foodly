@@ -92,8 +92,13 @@ class Cart with ChangeNotifier {
             price: existingCartItem.price),
       );
       // Delete CartItem if Quantity is 0
-      if (result2.quantity == 0) {
-        deleteItem(id);
+      // if (result2.quantity == 0) {
+      //   deleteItem(id);
+      // }
+
+      //  Don't Reduce CartItem if Quantity is 1
+      if (result2.quantity <= 1) {
+        result2.quantity == 1;
       }
     }
 

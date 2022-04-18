@@ -41,7 +41,7 @@ class ShoppingCartPage extends StatelessWidget {
                   style: TextStyle(fontSize: 14),
                 ),
                 Text(
-                  "\$${cart.totalAmount}",
+                  "\$${(cart.totalAmount).toStringAsFixed(2)}",
                   style: const TextStyle(fontSize: 20),
                 ),
                 SizedBox(

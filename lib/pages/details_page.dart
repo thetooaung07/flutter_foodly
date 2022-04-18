@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_order/model/OrderCounter.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/product.dart';
 import 'package:food_order/providers/products.dart';
@@ -54,8 +55,8 @@ class DetailsPage extends StatelessWidget {
 }
 
 class OrderCounter extends StatefulWidget {
-  final Product product;
-  const OrderCounter({Key? key, required this.product}) : super(key: key);
+  final OrderCounterModel order;
+  const OrderCounter({Key? key, required this.order}) : super(key: key);
 
   @override
   State<OrderCounter> createState() => _OrderCounterState();
@@ -66,34 +67,33 @@ class _OrderCounterState extends State<OrderCounter> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
-    final cartItem = cart.getCartItemById(widget.product.id);
+    final cartItem = cart.getCartItemById(widget.order.id);
     return Container(
       height: 35,
       width: 120,
-      // margin: EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: const Color.fromARGB(61, 235, 235, 235),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           GestureDetector(
-            onTap: cartItem == null
+            onTap: cartItem!.quantity <= 1
                 ? null
                 : () {
-                    cart.reduceQuantity(widget.product.id);
+                    cart.reduceQuantity(widget.order.id);
                   },
             child: Container(
               width: 35,
               height: 35,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(167, 0, 0, 0),
-                shape: BoxShape.circle,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.transparent,
+                border: Border.all(color: Colors.black),
               ),
               child: const Icon(
                 Icons.horizontal_rule_outlined,
-                color: Colors.white,
+                color: Colors.black,
                 size: 20,
               ),
             ),
@@ -101,19 +101,20 @@ class _OrderCounterState extends State<OrderCounter> {
           Text(cartItem == null ? "0" : cartItem.quantity.toString()),
           GestureDetector(
             onTap: () {
-              cart.addItem(widget.product.id, widget.product.price,
-                  widget.product.title, widget.product.imageUrl);
+              cart.addItem(widget.order.id, widget.order.price,
+                  widget.order.title, widget.order.imageUrl);
             },
             child: Container(
               width: 35,
               height: 35,
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(166, 0, 0, 0),
-                shape: BoxShape.circle,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.transparent,
+                border: Border.all(color: Colors.black),
               ),
               child: const Icon(
                 Icons.add,
-                color: Colors.white,
+                color: Colors.black,
                 size: 20,
               ),
             ),

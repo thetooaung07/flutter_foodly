@@ -12,19 +12,44 @@ class OrderHistoryPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Text("Order History"),
-            Text(
-                "Lorem Ipsum asfaf dkafljka adkfjakdfj akjdfklafjdkjadf adkfjakdf. aldkfjlasdf."),
-            SizedBox(height: 30),
-            OrderHistoryCard(),
-            OrderHistoryCard(),
-            OrderHistoryCard(),
-            OrderHistoryCard(),
-            OrderHistoryCard(),
-            OrderHistoryCard(),
-          ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "Order History",
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                  "The Order History will be automatically \"DELETED\" at the Start of every Month. "),
+              SizedBox(height: 20),
+              OrderHistoryCard(
+                orderIsSuccess: true,
+              ),
+              OrderHistoryCard(
+                orderIsSuccess: false,
+              ),
+              OrderHistoryCard(
+                orderIsSuccess: false,
+              ),
+              OrderHistoryCard(
+                orderIsSuccess: true,
+              ),
+              OrderHistoryCard(
+                orderIsSuccess: true,
+              ),
+              OrderHistoryCard(
+                orderIsSuccess: false,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -32,16 +57,18 @@ class OrderHistoryPage extends StatelessWidget {
 }
 
 class OrderHistoryCard extends StatelessWidget {
-  const OrderHistoryCard({Key? key}) : super(key: key);
+  final bool orderIsSuccess;
+  const OrderHistoryCard({Key? key, required this.orderIsSuccess})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var invoiceNumber = "N1232368";
     var location = "Number(629) Sitke Street, Pyay";
-    var orderIsSuccess = true;
+
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      padding: EdgeInsets.symmetric(vertical: 5),
       child: DottedBorder(
         borderType: BorderType.RRect,
         radius: Radius.circular(15),

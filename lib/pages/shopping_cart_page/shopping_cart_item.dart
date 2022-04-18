@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:food_order/model/OrderCounter.dart';
+import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/providers/cart.dart';
+import 'package:provider/provider.dart';
 
 class ShoppingCartItem extends StatelessWidget {
   final CartItem data;
@@ -8,68 +11,139 @@ class ShoppingCartItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(20, 15, 20, 0),
-      padding: const EdgeInsets.only(right: 20),
-      decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 255, 255, 255),
-          boxShadow: const [
-            BoxShadow(
-                color: Color.fromARGB(143, 117, 117, 117),
-                offset: Offset(1, 1.5), //(x,y)
-                blurRadius: 2.0,
-                spreadRadius: 0),
-          ],
-          border: Border.all(color: const Color.fromARGB(64, 0, 0, 0)),
-          borderRadius: BorderRadius.circular(20)),
-      child: IntrinsicHeight(
-        child: Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              height: 75,
-              width: 100,
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  bottomLeft: Radius.circular(20),
-                ),
-                image: DecorationImage(
-                  // alignment: Alignment.centerRight,
-                  repeat: ImageRepeat.noRepeat,
-                  image: AssetImage(data.imageUrl),
-                  fit: BoxFit.cover,
-                ),
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(
+            height: 75,
+            width: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              image: DecorationImage(
+                // alignment: Alignment.centerRight,
+                repeat: ImageRepeat.noRepeat,
+                image: AssetImage(data.imageUrl),
+                fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(
-              width: 30,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(data.title),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text("\$${data.price} x ${data.quantity}"),
-                ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(data.title),
+              SizedBox(
+                height: 15,
               ),
-            ),
-            const VerticalDivider(
-              indent: 7,
-              endIndent: 7,
-              color: Color.fromARGB(255, 0, 0, 0),
-              thickness: 2,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-            Text("\$${data.price * data.quantity}"),
-          ],
-        ),
+              OrderCounter(
+                  order: OrderCounterModel(
+                id: data.id,
+                title: data.title,
+                imageUrl: data.imageUrl,
+                price: data.price,
+              )),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Consumer<Cart>(
+                builder: (context, cartProvider, child) => IconButton(
+                    onPressed: () => cartProvider.deleteItem(data.id),
+                    icon: Icon(Icons.cancel_rounded)),
+              ),
+              Text("\$${(data.price * data.quantity).toStringAsFixed(2)}"),
+              SizedBox(
+                height: 12,
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
 }
+
+// @override
+// Widget build(BuildContext context) {
+//   final String name = "Rider One";
+
+//   return Container(
+//     margin: EdgeInsets.only(bottom: 10),
+//     padding: EdgeInsets.symmetric(horizontal: 10),
+//     height: 80,
+//     decoration: BoxDecoration(
+//       color: Colors.transparent,
+//     ),
+//     child: Row(
+//       crossAxisAlignment: CrossAxisAlignment.center,
+//       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//       children: [
+//         Container(
+//           height: 75,
+//           width: 100,
+//           decoration: BoxDecoration(
+//             borderRadius: const BorderRadius.only(
+//               topLeft: Radius.circular(20),
+//               bottomLeft: Radius.circular(20),
+//             ),
+//             image: DecorationImage(
+//               // alignment: Alignment.centerRight,
+//               repeat: ImageRepeat.noRepeat,
+//               image: AssetImage(data.imageUrl),
+//               fit: BoxFit.cover,
+//             ),
+//           ),
+//         ),
+//         Flexible(
+//           child: Padding(
+//             padding: const EdgeInsets.all(10.0),
+//             child: Column(
+//               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 Flexible(
+//                   child: RichText(
+//                     text: TextSpan(
+//                         style: TextStyle(color: Colors.black45),
+//                         children: [
+//                           TextSpan(
+//                               text: "${name}",
+//                               style: TextStyle(
+//                                   fontSize: 16,
+//                                   fontWeight: FontWeight.bold,
+//                                   color: Colors.black54)),
+//                           TextSpan(
+//                               text:
+//                                   " is now heading to your location to deliver your Order.")
+//                         ]),
+//                     // "${name} is now heading to your location to deliver your Order.",
+//                     maxLines: 2,
+//                     overflow: TextOverflow.ellipsis,
+//                   ),
+//                 ),
+//                 Text(
+//                   "2h ago",
+//                   style: TextStyle(
+//                       fontSize: 14,
+//                       fontWeight: FontWeight.w500,
+//                       color: Colors.black45),
+//                 )
+//               ],
+//             ),
+//           ),
+//         ),
+//         Container(
+//           width: 50,
+//           // height: 80,
+//           decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(12),
+//               image: DecorationImage(
+//                   image: AssetImage("assets/images/hot_pot.jpeg"))),
+//         ),
+//       ],
+//     ),
+//   );
+// }
