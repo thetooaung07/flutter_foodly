@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/model/OrderCounter.dart';
 import 'package:food_order/providers/cart.dart';
-import 'package:food_order/providers/product.dart';
 import 'package:food_order/providers/products.dart';
 import 'package:provider/provider.dart';
 
@@ -14,8 +13,6 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final productData = Provider.of<Products>(context);
     final detailProduct = productData.getProductById(productId);
-    final cart = Provider.of<Cart>(context);
-    final cartItem = cart.getCartItemById(productId);
 
     return Scaffold(
         backgroundColor: Colors.black,

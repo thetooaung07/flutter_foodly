@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/badge.dart';
-import 'package:food_order/components/hero_dialog_route.dart';
 
 class HomePageIntro extends StatefulWidget {
   const HomePageIntro({Key? key}) : super(key: key);

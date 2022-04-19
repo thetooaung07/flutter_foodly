@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
 import 'package:food_order/utils/constants.dart';
 import 'package:provider/provider.dart';
@@ -14,8 +13,6 @@ class ProductDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final productData = Provider.of<Products>(context);
     final detailProduct = productData.getProductById(productId);
-    final cart = Provider.of<Cart>(context);
-    final cartItem = cart.getCartItemById(productId);
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
@@ -37,7 +34,6 @@ class ProductDetailsPage extends StatelessWidget {
                   children: [
                     IconButton(
                         onPressed: () {
-                          print("On Clicked");
                           Navigator.of(context).pop();
                         },
                         icon: SvgPicture.asset(
@@ -46,13 +42,13 @@ class ProductDetailsPage extends StatelessWidget {
                         )),
                     Row(
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(
-                            "assets/images/heart_icon.svg",
-                            color: Colors.white,
-                          ),
-                        ),
+                        // IconButton(
+                        //   onPressed: () {},
+                        //   icon: SvgPicture.asset(
+                        //     "assets/images/heart_icon.svg",
+                        //     color: Colors.white,
+                        //   ),
+                        // ),
                         SizedBox(
                           width: 20,
                         ),
@@ -101,7 +97,7 @@ class ProductDetailsPage extends StatelessWidget {
                         height: 20,
                       ),
                       Text(
-                        "Dinner is the best time for your\n${detailProduct.title}",
+                        "Dinner suits the best for your\n${detailProduct.title}",
                         style: TextStyle(fontSize: 20, height: 1.5),
                       ),
                       SizedBox(
@@ -125,7 +121,7 @@ class ProductDetailsPage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Jean-Luis",
+                                "Shop Name BBQ",
                                 style: TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.bold),
                               ),
@@ -133,7 +129,7 @@ class ProductDetailsPage extends StatelessWidget {
                                 height: 3,
                               ),
                               Text(
-                                "Interior Design",
+                                "location: Yangon",
                                 style: TextStyle(fontSize: 13),
                               )
                             ],
@@ -155,12 +151,12 @@ class ProductDetailsPage extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(5)),
                               child: Padding(
                                 padding: const EdgeInsets.all(6.0),
-                                child: Text("Interior"),
+                                child: Text("Delicious"),
                               ),
                             ),
                           ),
                           SizedBox(
-                            width: 20,
+                            width: 10,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -168,11 +164,11 @@ class ProductDetailsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5)),
                             child: Padding(
                               padding: const EdgeInsets.all(6.0),
-                              child: Text("40m2"),
+                              child: Text("Free Delivery"),
                             ),
                           ),
                           SizedBox(
-                            width: 20,
+                            width: 10,
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -180,7 +176,7 @@ class ProductDetailsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(5)),
                             child: Padding(
                               padding: const EdgeInsets.all(6.0),
-                              child: Text("Ideas"),
+                              child: Text("High Rating"),
                             ),
                           )
                         ],
@@ -202,41 +198,28 @@ class ProductDetailsPage extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-
-                        // TODO: Change this one to vertical 2 Grid View
-
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Container(
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                        image:
-                                            AssetImage(detailProduct.imageUrl),
-                                        fit: BoxFit.cover)),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 20),
-                              child: Container(
-                                width: 150,
-                                height: 150,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    image: DecorationImage(
-                                        image:
-                                            AssetImage(detailProduct.imageUrl),
-                                        fit: BoxFit.cover)),
-                              ),
-                            ),
-                          ],
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage(detailProduct.imageUrl),
+                                    fit: BoxFit.cover)),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.4,
+                            height: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                image: DecorationImage(
+                                    image: AssetImage(detailProduct.imageUrl),
+                                    fit: BoxFit.cover)),
+                          ),
+                        ],
                       )
                     ],
                   ),

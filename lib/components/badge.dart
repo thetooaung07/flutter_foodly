@@ -24,7 +24,7 @@ class Badge extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: value == "0" ? Colors.grey : Colors.red,
+              color: value == "0" ? Color.fromARGB(146, 3, 3, 3) : Colors.red,
             ),
             constraints: const BoxConstraints(
               minWidth: 15,

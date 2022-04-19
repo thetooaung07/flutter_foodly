@@ -24,11 +24,8 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (ctx) => Products()),
           ChangeNotifierProvider(create: (ctx) => Cart()),
-          // ChangeNotifierProvider(create: (ctx) => ThemeProvider())
         ],
         builder: (context, child) {
-          // final themeProvider = Provider.of<ThemeProvider>(context);
-
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             onGenerateRoute: (settings) {
@@ -92,28 +89,6 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // key: scaffoldKey,
-      // drawer: MainScreenDrawer(),
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.space_dashboard_rounded),
-      //     // onPressed: () => scaffoldKey.currentState?.openDrawer(),
-      //     onPressed: () => null,
-      //   ),
-      //   title: Column(
-      //     children: const [
-      //       Text(
-      //         "Location",
-      //         style: TextStyle(fontSize: 13),
-      //       ),
-      //       Text(
-      //         "Yangon, MM",
-      //         style: TextStyle(fontSize: 15),
-      //       )
-      //     ],
-      //   ),
-      //   centerTitle: true,
-      // ),
       body: PageView(
         onPageChanged: (newIndex) {
           setState(() {
@@ -131,7 +106,6 @@ class _MainScreenState extends State<MainScreen> {
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 0,
         unselectedFontSize: 0,
-        // backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.fixed,
         currentIndex: currentIndex,
         selectedItemColor: Colors.red,
@@ -140,21 +114,34 @@ class _MainScreenState extends State<MainScreen> {
         showSelectedLabels: false,
         onTap: onTap,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.history_rounded), label: "History"),
+              icon: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Icon(Icons.apps),
+              ),
+              label: "Home"),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline_rounded),
+              icon: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Icon(Icons.history_rounded),
+              ),
+              label: "History"),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Icon(Icons.person_outline_rounded),
+            ),
             label: "User",
           ),
-          // BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: "Bar"),
           BottomNavigationBarItem(
               icon: Consumer<Cart>(
                 builder: (_, cart, ch) => Badge(
                   child: ch!,
                   value: cart.itemCount.toString(),
                 ),
-                child: const Icon(Icons.shopping_cart),
+                child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: const Icon(Icons.shopping_cart)),
               ),
               label: "Shopping Cart"),
         ],

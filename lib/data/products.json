@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": "p1",
+      "title": "Home BBQ",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
+      "price": 12.99,
+      "imageUrl": "assets/images/bbq.jpg",
+      "category": "Recommend"
+    },
+    {
+      "id": "p2",
+      "title": "Sandwich",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
+      "price": 9.99,
+      "imageUrl": "assets/images/sandwich.jpg",
+      "category": "Junk Food"
+    },
+    {
+      "id": "p3",
+      "title": "Mala Xiang Guo",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
+      "price": 25.99,
+      "imageUrl": "assets/images/mala_xg.png",
+      "category": "Snack"
+    },
+    {
+      "id": "p4",
+      "title": "Hot Pot",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
+      "price": 20.99,
+      "imageUrl": "assets/images/hot_pot.jpeg",
+      "category": "Recommend"
+    },
+    {
+      "id": "p5",
+      "title": "Pork Noodle",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
+      "price": 5.99,
+      "imageUrl": "assets/images/pork_noodle.jpg",
+      "category": "Junk Food"
+    },
+    {
+      "id": "p6",
+      "title": "Burger",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nulla turpis, facilisis vitae quam sed, tristique iaculis erat. Aliquam erat volutpat. Aenean placerat, sem sit amet suscipit pretium, nulla velit ultrices eros, eu tempor quam lorem non mauris. Nulla ut dapibus elit. Phasellus cursus posuere risus, eget dignissim metus dictum eget. Vivamus in mauris.",
+      "price": 9.99,
+      "imageUrl": "assets/images/burger.jpg",
+      "category": "Snack"
+    }
+  ]
+}
