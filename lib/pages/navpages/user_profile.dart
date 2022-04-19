@@ -18,6 +18,7 @@ class UserProfilePage extends StatelessWidget {
               child: Row(children: [
                 CircleAvatar(
                   radius: 40,
+                  backgroundColor: Colors.red,
                 ),
                 SizedBox(width: 20),
                 Column(
@@ -49,6 +50,9 @@ class UserProfilePage extends StatelessWidget {
                         Text("Jane Doe"),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.red)),
                           child: Text("Edit"),
                         ),
                       ],
@@ -64,6 +68,9 @@ class UserProfilePage extends StatelessWidget {
                         Text("Jane Doe"),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.red)),
                           child: Text("Edit"),
                         ),
                       ],
@@ -78,6 +85,9 @@ class UserProfilePage extends StatelessWidget {
                         Text("Jane Doe"),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.red)),
                           child: Text("Edit"),
                         ),
                       ],
@@ -102,6 +112,9 @@ class UserProfilePage extends StatelessWidget {
                         Text("Tsks Free"),
                         ElevatedButton(
                           onPressed: () {},
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all<Color>(Colors.red)),
                           child: Text("Edit"),
                         ),
                       ],
