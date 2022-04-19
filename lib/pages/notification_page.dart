@@ -7,13 +7,14 @@ class NotificationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notification"),
+        title: const Text("Notification"),
         actions: [
           IconButton(
-              onPressed: () {}, icon: Icon(Icons.format_line_spacing_rounded))
+              onPressed: () {},
+              icon: const Icon(Icons.format_line_spacing_rounded))
         ],
       ),
-      body: Column(children: [
+      body: Column(children: const [
         NotificationItem(),
         NotificationItem(),
         NotificationItem(),
@@ -28,13 +29,13 @@ class NotificationItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String name = "Rider One";
+    const String name = "Rider One";
 
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       height: 80,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.transparent,
       ),
       child: Row(
@@ -46,7 +47,7 @@ class NotificationItem extends StatelessWidget {
             // height: 80,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                image: DecorationImage(
+                image: const DecorationImage(
                     image: AssetImage("assets/images/hot_pot.jpeg"))),
           ),
           Flexible(
@@ -58,11 +59,11 @@ class NotificationItem extends StatelessWidget {
                 children: [
                   Flexible(
                     child: RichText(
-                      text: TextSpan(
+                      text: const TextSpan(
                           style: TextStyle(color: Colors.black45),
                           children: [
                             TextSpan(
-                                text: "${name}",
+                                text: name,
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -76,7 +77,7 @@ class NotificationItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "2h ago",
                     style: TextStyle(
                         fontSize: 14,
@@ -92,7 +93,7 @@ class NotificationItem extends StatelessWidget {
             // height: 80,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
-                image: DecorationImage(
+                image: const DecorationImage(
                     image: AssetImage("assets/images/hot_pot.jpeg"))),
           ),
         ],

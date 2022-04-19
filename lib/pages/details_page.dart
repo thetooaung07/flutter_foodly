@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order/model/OrderCounter.dart';
+import 'package:food_order/model/order_counter.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +19,7 @@ class DetailsPage extends StatelessWidget {
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.4,
               decoration: BoxDecoration(
@@ -40,7 +40,7 @@ class DetailsPage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.7,
                 decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.7),
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(40),
                       topRight: Radius.circular(40),
                     )),

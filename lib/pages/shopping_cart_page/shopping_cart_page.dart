@@ -48,9 +48,15 @@ class ShoppingCartPage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: 45,
                   child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: const Color.fromRGBO(15, 23, 42, 1)),
-                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(primary: Colors.red),
+                      onPressed: () {
+                        if (cart.itemCount == 0) {
+                          return;
+                        } else {
+                          Navigator.of(context)
+                              .pushNamed("checkout_confirm_page");
+                        }
+                      },
                       child: const Text(
                         "Check Out",
                         style: TextStyle(fontSize: 20),

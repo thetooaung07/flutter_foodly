@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_order/model/OrderCounter.dart';
+import 'package:food_order/model/order_counter.dart';
 import 'package:food_order/pages/details_page.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +12,7 @@ class ShoppingCartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(),
+      decoration: const BoxDecoration(),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -34,7 +34,7 @@ class ShoppingCartItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(data.title),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               OrderCounter(
@@ -52,10 +52,10 @@ class ShoppingCartItem extends StatelessWidget {
               Consumer<Cart>(
                 builder: (context, cartProvider, child) => IconButton(
                     onPressed: () => cartProvider.deleteItem(data.id),
-                    icon: Icon(Icons.cancel_rounded)),
+                    icon: const Icon(Icons.cancel_rounded)),
               ),
               Text("\$${(data.price * data.quantity).toStringAsFixed(2)}"),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
             ],

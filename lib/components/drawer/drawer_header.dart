@@ -5,7 +5,7 @@ class DrawerHeaderComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UserAccountsDrawerHeader(
+    return const UserAccountsDrawerHeader(
         decoration: BoxDecoration(color: Colors.transparent),
         arrowColor: Colors.black,
         accountName: Text(

@@ -8,15 +8,15 @@ class OrderHistoryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Order History"),
+        title: const Text("Order History"),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               SizedBox(
                 height: 20,
               ),
@@ -67,31 +67,31 @@ class OrderHistoryCard extends StatelessWidget {
     var location = "Number(629) Sitke Street, Pyay";
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-      padding: EdgeInsets.symmetric(vertical: 5),
+      margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 5),
       child: DottedBorder(
         borderType: BorderType.RRect,
-        radius: Radius.circular(15),
+        radius: const Radius.circular(15),
         color: Colors.black,
         strokeWidth: 2,
-        dashPattern: [5, 5],
+        dashPattern: const [5, 5],
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Invoice Number: ${invoiceNumber}"),
-                  Text("\$25.55"),
+                  Text("Invoice Number: $invoiceNumber"),
+                  const Text("\$25.55"),
                 ],
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Flexible(child: Text("Deliver to: ${location}")),
-                  SizedBox(width: 20),
+                  Flexible(child: Text("Deliver to: $location")),
+                  const SizedBox(width: 20),
                   Icon(
                     orderIsSuccess
                         ? Icons.check_circle_rounded

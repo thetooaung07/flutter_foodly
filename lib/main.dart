@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/badge.dart';
+import 'package:food_order/pages/checkout_confirm_page.dart';
 import 'package:food_order/pages/navpages/home_page.dart';
 import 'package:food_order/pages/navpages/order_history.dart';
 import 'package:food_order/pages/navpages/user_profile.dart';
 import 'package:food_order/pages/notification_page.dart';
 import 'package:food_order/pages/product_details_page.dart';
 import 'package:food_order/pages/shopping_cart_page/shopping_cart_page.dart';
+import 'package:food_order/pages/success.dart';
 import 'package:food_order/providers/cart.dart';
 import 'package:food_order/providers/products.dart';
 import 'package:provider/provider.dart';
@@ -44,6 +46,12 @@ class MyApp extends StatelessWidget {
                 case "notification_page":
                   return MaterialPageRoute(
                       builder: (context) => (const NotificationPage()));
+                case "checkout_confirm_page":
+                  return MaterialPageRoute(
+                      builder: (context) => (const CheckOutConfirmPage()));
+                case "success_checkout":
+                  return MaterialPageRoute(
+                      builder: (context) => (const Success()));
                 default:
                   return MaterialPageRoute(
                       builder: (context) => (const HomePage()));
@@ -52,16 +60,16 @@ class MyApp extends StatelessWidget {
             title: 'Shopy',
             // themeMode: themeProvider.themeMode,
             theme: ThemeData(
-                appBarTheme: AppBarTheme(backgroundColor: Colors.red)),
+                appBarTheme: const AppBarTheme(backgroundColor: Colors.red)),
             // darkTheme: MyTheme.darkTheme,
-            home: MainScreen(),
+            home: const MainScreen(),
           );
         });
   }
 }
 
 class MainScreen extends StatefulWidget {
-  MainScreen({Key? key}) : super(key: key);
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -73,16 +81,16 @@ class _MainScreenState extends State<MainScreen> {
 
   int currentIndex = 0;
   List pages = [
-    HomePage(),
-    OrderHistoryPage(),
-    UserProfilePage(),
-    ShoppingCartPage(),
+    const HomePage(),
+    const OrderHistoryPage(),
+    const UserProfilePage(),
+    const ShoppingCartPage(),
   ];
   void onTap(int index) {
     setState(() {
       currentIndex = index;
       _pageController.animateToPage(index,
-          duration: Duration(milliseconds: 500), curve: Curves.ease);
+          duration: const Duration(milliseconds: 500), curve: Curves.ease);
     });
   }
 
@@ -96,7 +104,7 @@ class _MainScreenState extends State<MainScreen> {
           });
         },
         controller: _pageController,
-        children: [
+        children: const [
           HomePage(),
           OrderHistoryPage(),
           UserProfilePage(),
@@ -114,21 +122,21 @@ class _MainScreenState extends State<MainScreen> {
         showSelectedLabels: false,
         onTap: onTap,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Icon(Icons.apps),
               ),
               label: "Home"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
               icon: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.0),
                 child: Icon(Icons.history_rounded),
               ),
               label: "History"),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(10.0),
               child: Icon(Icons.person_outline_rounded),
             ),
             label: "User",
@@ -139,9 +147,9 @@ class _MainScreenState extends State<MainScreen> {
                   child: ch!,
                   value: cart.itemCount.toString(),
                 ),
-                child: Padding(
+                child: const Padding(
                     padding: EdgeInsets.all(10),
-                    child: const Icon(Icons.shopping_cart)),
+                    child: Icon(Icons.shopping_cart)),
               ),
               label: "Shopping Cart"),
         ],

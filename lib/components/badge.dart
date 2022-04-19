@@ -24,7 +24,9 @@ class Badge extends StatelessWidget {
             alignment: Alignment.center,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: value == "0" ? Color.fromARGB(146, 3, 3, 3) : Colors.red,
+              color: value == "0"
+                  ? const Color.fromARGB(146, 3, 3, 3)
+                  : Colors.red,
             ),
             constraints: const BoxConstraints(
               minWidth: 15,
@@ -66,7 +68,7 @@ class NotificationBadge extends StatelessWidget {
           right: 2,
           top: 2,
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: isNew! ? Colors.red : Colors.transparent),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_order/components/badge.dart';
+import 'package:food_order/utils/constants.dart';
 
 class HomePageIntro extends StatefulWidget {
   const HomePageIntro({Key? key}) : super(key: key);
@@ -19,14 +20,14 @@ class _HomePageIntroState extends State<HomePageIntro> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Hello User",
-            style: TextStyle(fontSize: 25),
+            greeting(),
+            style: const TextStyle(fontSize: 18),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text("What do you want to order today?"),
+              const Text("What do you want to order today?"),
               GestureDetector(
                 onTap: () {
                   // Navigator.of(context).push(
@@ -44,12 +45,12 @@ class _HomePageIntroState extends State<HomePageIntro> {
                 child: Hero(
                   tag: "popUpNotification",
                   placeholderBuilder: (context, size, widget) {
-                    return Opacity(
+                    return const Opacity(
                         opacity: 0.5,
                         child: Icon(Icons.notifications_none_rounded));
                   },
                   child: NotificationBadge(
-                    child: Icon(Icons.notifications_none_rounded),
+                    child: const Icon(Icons.notifications_none_rounded),
                     isNew: !isClicked,
                   ),
                 ),
@@ -76,12 +77,12 @@ class PopUpNotification extends StatelessWidget {
         child: Material(
           borderRadius: BorderRadius.circular(10),
           child: SizedBox(
-            child: Container(
+            child: SizedBox(
               height: 300,
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
-                  children: [
+                  children: const [
                     PopUpNotificationItem(),
                     PopUpNotificationItem(),
                     PopUpNotificationItem(),
@@ -104,9 +105,9 @@ class PopUpNotificationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 10),
+      margin: const EdgeInsets.only(bottom: 10),
       height: 60,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.transparent,
         //   border: Border(
         // bottom: BorderSide(width: 1.0, color: Colors.lightBlue.shade900),
@@ -121,26 +122,26 @@ class PopUpNotificationItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(left: 10),
+              margin: const EdgeInsets.only(left: 10),
               width: 50,
               height: 40,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
+                  image: const DecorationImage(
                       image: AssetImage("assets/images/hot_pot.jpeg"))),
             ),
-            SizedBox(width: 15),
+            const SizedBox(width: 15),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
-                  children: [
+                  children: const [
                     Text("Jon Doe"),
                     Text("joins Foody Today.Order Now"),
                   ],
                 ),
-                Text("2h ago"),
+                const Text("2h ago"),
               ],
             ),
           ],

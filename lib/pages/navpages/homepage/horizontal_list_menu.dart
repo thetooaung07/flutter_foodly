@@ -57,7 +57,7 @@ class HorizontalListItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: isSelected!
-              ? Color.fromARGB(201, 228, 33, 23)
+              ? const Color.fromARGB(201, 228, 33, 23)
               : const Color.fromRGBO(245, 247, 251, 1),
           // border: Border.all(color: Colors.black),
           borderRadius: BorderRadius.circular(20),
@@ -68,7 +68,7 @@ class HorizontalListItem extends StatelessWidget {
           child: Text(
             categoryUtils.containsKey(label)
                 ? "${categoryUtils[label]!["emoji"]}  $label"
-                : "$label",
+                : label,
             style: TextStyle(
                 fontSize: 14, color: isSelected! ? Colors.white : Colors.black),
           ),

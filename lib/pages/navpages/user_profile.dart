@@ -7,23 +7,23 @@ class UserProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Account"),
+        title: const Text("My Account"),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(20, 30, 20, 10),
+          padding: const EdgeInsets.fromLTRB(20, 30, 20, 10),
           child: Column(children: [
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 8),
+              margin: const EdgeInsets.symmetric(horizontal: 8),
               child: Row(children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 40,
                   backgroundColor: Colors.red,
                 ),
-                SizedBox(width: 20),
+                const SizedBox(width: 20),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: const [
                     Text(
                       "User",
                       style: TextStyle(fontSize: 25),
@@ -35,7 +35,7 @@ class UserProfilePage extends StatelessWidget {
                 )
               ]),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Card(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -43,57 +43,57 @@ class UserProfilePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //UserName
-                    Text("Display Name"),
+                    const Text("Display Name"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Jane Doe"),
+                        const Text("Jane Doe"),
                         ElevatedButton(
                           onPressed: () {},
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all<Color>(Colors.red)),
-                          child: Text("Edit"),
+                          child: const Text("Edit"),
                         ),
                       ],
                     ),
 
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
 
                     //Email
-                    Text("Display Name"),
+                    const Text("Display Name"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Jane Doe"),
+                        const Text("Jane Doe"),
                         ElevatedButton(
                           onPressed: () {},
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all<Color>(Colors.red)),
-                          child: Text("Edit"),
+                          child: const Text("Edit"),
                         ),
                       ],
                     ),
 
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                     //Password
-                    Text("Display Name"),
+                    const Text("Display Name"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Jane Doe"),
+                        const Text("Jane Doe"),
                         ElevatedButton(
                           onPressed: () {},
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all<Color>(Colors.red)),
-                          child: Text("Edit"),
+                          child: const Text("Edit"),
                         ),
                       ],
                     ),
 
-                    SizedBox(height: 15),
+                    const SizedBox(height: 15),
                   ],
                 ),
               ),
@@ -105,32 +105,30 @@ class UserProfilePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     //UserName
-                    Text("Subscription"),
+                    const Text("Subscription"),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Tsks Free"),
+                        const Text("Tsks Free"),
                         ElevatedButton(
                           onPressed: () {},
                           style: ButtonStyle(
                               backgroundColor:
                                   MaterialStateProperty.all<Color>(Colors.red)),
-                          child: Text("Edit"),
+                          child: const Text("Edit"),
                         ),
                       ],
                     ),
-                    SizedBox(height: 20),
-                    Container(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("See all of Pro Benefits"),
-                          Icon(
-                            Icons.arrow_forward_rounded,
-                            size: 20,
-                          ),
-                        ],
-                      ),
+                    const SizedBox(height: 20),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        Text("See all of Pro Benefits"),
+                        Icon(
+                          Icons.arrow_forward_rounded,
+                          size: 20,
+                        ),
+                      ],
                     )
                   ],
                 ),
@@ -151,8 +149,8 @@ class SubscriptionBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.all(3),
-      padding: EdgeInsets.symmetric(horizontal: 7, vertical: 2),
+      margin: const EdgeInsets.all(3),
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(5)),
         border: Border.all(color: Colors.black45),

@@ -155,7 +155,7 @@ class CategoryItem extends StatelessWidget {
       child: Text(
         categoryUtils.containsKey(category)
             ? "${categoryUtils[category]!["emoji"]}  $category"
-            : "$category",
+            : category,
         style: const TextStyle(color: Colors.white),
       ),
     );
