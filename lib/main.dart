@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
               switch (settings.name) {
                 case "home":
                   return MaterialPageRoute(
-                      builder: (context) => (const HomePage()));
+                      builder: (context) => (const MainScreen()));
                 case "details_page":
                   return MaterialPageRoute(
                       builder: (context) => (ProductDetailsPage(

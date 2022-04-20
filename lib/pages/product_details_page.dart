@@ -141,18 +141,13 @@ class ProductDetailsPage extends StatelessWidget {
                       ),
                       Row(
                         children: <Widget>[
-                          InkWell(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey),
-                                  borderRadius: BorderRadius.circular(5)),
-                              child: const Padding(
-                                padding: EdgeInsets.all(6.0),
-                                child: Text("Delicious"),
-                              ),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(5)),
+                            child: const Padding(
+                              padding: EdgeInsets.all(6.0),
+                              child: Text("Delicious"),
                             ),
                           ),
                           const SizedBox(

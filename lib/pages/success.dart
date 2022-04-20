@@ -26,7 +26,10 @@ class _SuccessState extends State<Success> {
           DefaultButton(
             btnText: 'Ok',
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                "home",
+                (route) => false,
+              );
             },
           ),
         ],
