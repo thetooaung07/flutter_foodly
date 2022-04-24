@@ -34,15 +34,4 @@ class Product with ChangeNotifier {
     _count = num;
     notifyListeners();
   }
-
-  factory Product.fromJson(dynamic json) {
-    return Product(
-      id: json['id'],
-      title: json["title"],
-      description: json["description"],
-      price: json["price"],
-      imageUrl: json["imageUrl"],
-      category: json["category"],
-    );
-  }
 }

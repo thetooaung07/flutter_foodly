@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
                       builder: (context) => (const Success()));
                 default:
                   return MaterialPageRoute(
-                      builder: (context) => (const HomePage()));
+                      builder: (context) => (const MainScreen()));
               }
             },
             title: 'Shopy',
